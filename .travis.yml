@@ -1,0 +1,9 @@
+language: csharp
+dist: trusty
+sudo: required
+mono: none
+dotnet: 3.1.401
+script:
+  - dotnet restore
+  - dotnet build
+  - dotnet publich -c Release
