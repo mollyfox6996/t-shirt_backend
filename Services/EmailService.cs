@@ -29,7 +29,7 @@ namespace Services
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = $"<h1>Hi {displayName}.</h1><p>Click on the link to cinfirm you email adress {callbackUrl}</p>"
+                Text = $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email adress {callbackUrl}</p>"
             };
             
 
