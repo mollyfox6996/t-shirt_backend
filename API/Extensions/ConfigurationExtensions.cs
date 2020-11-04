@@ -3,16 +3,13 @@ using Services.Interfaces;
 using Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Infrastructure;
+using Domain.Entities;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 namespace API.Extensions
 {
@@ -24,14 +21,17 @@ namespace API.Extensions
         }
 
         public static void ConfigureEmailService(this IServiceCollection services) => services.AddScoped(typeof(IEmailService), typeof(EmailService));
-
+        public static void ConfigureTokenService(this IServiceCollection services) => services.AddScoped(typeof(ITokenService), typeof(TokenService));
         public static void ConfigureUserService(this IServiceCollection services) => services.AddScoped(typeof(IUserService), typeof(UserService));
 
-        public static void ConfigureIdentity(this IServiceCollection services)
+        public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<AppUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+            var builder = services.AddIdentityCore<AppUser>();
+
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<AppDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+            builder.AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -39,32 +39,64 @@ namespace API.Extensions
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 4;
+                options.SignIn.RequireConfirmedEmail = true;
+                options.User.RequireUniqueEmail = true;
             });
-        }
-
-        public static void ConfigureAuthentication(this IServiceCollection services, IConfiguration configuration)
-        {
-            var key = Encoding.UTF8.GetBytes(configuration["SecretKey"]);
-
-            services.Configure<DataProtectionTokenProviderOptions>(o => o.TokenLifespan = TimeSpan.FromHours(Convert.ToInt32(configuration["LinkExpiration:Hour"])));
-            services.AddAuthentication(x => 
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x => 
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = false;
-                x.TokenValidationParameters = new TokenValidationParameters
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
                 {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero,
-                };
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:SecretKey"])),
+                        ValidIssuer = configuration["Token:Issuer"],
+                        ValidateIssuer = true,
+                        ValidateAudience = false
+
+                    };
+                });
+        }
+
+        public static void ConfigureCors(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .WithOrigins(configuration["AngularUrl"]);
+                });
             });
         }
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TShirt API", Version = "V1" });
+                var securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT authentication scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+                c.AddSecurityDefinition("Bearer", securitySchema);
+                var securityRequirement = new OpenApiSecurityRequirement {
+                    {securitySchema, new[] { "Bearer"}}};
+                c.AddSecurityRequirement(securityRequirement);
+            });
+
+        }
+      
     }
 }

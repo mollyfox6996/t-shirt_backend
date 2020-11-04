@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain
+namespace Domain.DTOs
 {
-    public class User
+    public class LoginDTO
     {
-        public string DisplayName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
     }

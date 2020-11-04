@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+
 namespace API
 {
     public class Startup
@@ -27,11 +28,14 @@ namespace API
         {
             services.AddControllers();
             services.ConfigureDbContext(Configuration);
+            services.ConfigureIdentity(Configuration);
+            services.ConfigureTokenService();
             services.ConfigureEmailService();
             services.ConfigureUserService();
-            services.ConfigureIdentity();
-            services.AddCors();
-            services.ConfigureAuthentication(Configuration);
+            services.ConfigureSwagger();
+            services.ConfigureCors(Configuration);
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,21 +45,24 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-            //else
-            //{
-            //    app.UseHsts();
-            //}
-
-            app.UseCors(builder => 
-                builder.AllowAnyOrigin()
-                .AllowAnyHeader()
-                .AllowAnyMethod());
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
+            app.UseCors("CorsPolicy");
+
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TShirt API V1");
+            });
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

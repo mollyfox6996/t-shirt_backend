@@ -1,10 +1,10 @@
-﻿using Domain;
+﻿using Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -13,7 +13,7 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
 
         public AccountController(IUserService userService)
         {
@@ -22,11 +22,11 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IdentityResult> Register(User model) => await _userService.Create(model);
+        public async Task<IdentityResult> Register(UserDTO model) => await _userService.Register(model);
 
         [HttpPost]
         [Route("login")]
-        public async Task<LoginResult> Login(Login model) => await _userService.SignIn(model);
+        public async Task<LoginResultDTO> Login(LoginDTO model) => await _userService.LogIn(model);
 
         [HttpGet]
         [Route("signout")]
@@ -34,11 +34,20 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("confirmEmail")]
-        public async Task<OperationResult<string>> ConfirmEmail(string userId, string code)
+        public async Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code)
         {
-            OperationResult<string> result = new OperationResult<string>();
-            result = await _userService.ConfirmEmail(userId, code);
+            OperationResultDTO<string> result = await _userService.ConfirmEmail(userId, code);
             return result;
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("getCurrentUser")]
+        public async Task<UserDTO> GetCurrentUser()
+        {
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            return await _userService.GetUser(email);
+        }
+
     }
 }

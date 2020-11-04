@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Entities;
 
 namespace Infrastructure.Context
 {
@@ -11,6 +12,11 @@ namespace Infrastructure.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) 
         {
             Database.EnsureCreated();    
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
         }
     }
 }

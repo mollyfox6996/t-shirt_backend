@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Domain.DTOs;
+using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using System.Web;
@@ -22,18 +21,18 @@ namespace Services
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IEmailService _emailService;
-        private readonly IConfiguration _configuration;
-        public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService, IConfiguration configuration)
+        private readonly ITokenService _tokenService;
+        public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService,ITokenService tokenService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
-            _configuration = configuration;
+            _tokenService = tokenService;
         }
 
-        public async Task<OperationResult<string>> ConfirmEmail(string userId, string code)
+        public async Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code)
         {
-            OperationResult<string> result = new OperationResult<string>();
+            OperationResultDTO<string> result = new OperationResultDTO<string>();
             AppUser user = _userManager.Users.FirstOrDefault(x => x.Id == userId);
             IdentityOptions options = new IdentityOptions();
 
@@ -68,7 +67,7 @@ namespace Services
             return result;
         }
 
-        public async Task<IdentityResult> Create(User model)
+        public async Task<IdentityResult> Register(UserDTO model)
         {
             var user = new AppUser
             {
@@ -78,26 +77,26 @@ namespace Services
                 
             };
 
-            var userResulr = await _userManager.CreateAsync(user, model.Password);
+            var userResult = await _userManager.CreateAsync(user, model.Password);
 
-            if(userResulr.Succeeded)
+            if(userResult.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                var url = "http://localhost:4200/Account/accountActivation";
+                var url = "http://localhost:4200/account/accountConfirm";
 
                 var callbackUrl = url + "?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
                 await _emailService.SendEmail(user.Email, user.DisplayName, HtmlEncoder.Default.Encode(callbackUrl), "Activation link");
 
 
             }
-            return userResulr;
+            return userResult;
         }
 
-        public async Task<LoginResult> SignIn(Login model)
+        public async Task<LoginResultDTO> LogIn(LoginDTO model)
         {
-            var loginResult = new LoginResult();
-            var user = await _userManager.FindByNameAsync(model.Email);
+            var loginResult = new LoginResultDTO();
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
             if(user != null)
             {
@@ -110,25 +109,11 @@ namespace Services
                 }
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, true);
 
             if(result.Succeeded)
             {
-                var secretKey = _configuration["SecretKey"];
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim("UserID",user.Id.ToString())
-
-                    }),
-                    Expires = DateTime.UtcNow.AddDays(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), SecurityAlgorithms.HmacSha256Signature)
-                };
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-                var token = tokenHandler.WriteToken(securityToken);
+                var token = _tokenService.CreateToken(user);
 
                 loginResult.Success = true;
                 loginResult.Token = token;
@@ -140,6 +125,19 @@ namespace Services
             }
 
             return loginResult;
+
+        }
+
+        public async Task<UserDTO> GetUser(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            UserDTO userResult = new UserDTO
+            {
+                DisplayName = user.DisplayName,
+                Email = user.Email,
+                UserId = user.Id
+            };
+            return userResult;
 
         }
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain
+namespace Domain.DTOs
 {
-    public class LoginResult
+    public class LoginResultDTO
     {
         public bool Success { get; set; }
         public string Message { get; set; }

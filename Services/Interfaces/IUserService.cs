@@ -1,18 +1,17 @@
-﻿using Domain;
+﻿using Domain.DTOs;
 using Microsoft.AspNetCore.Identity;
-using System;
-
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
     public interface IUserService
     {
-        Task<IdentityResult> Create(User model);
-        Task<LoginResult> SignIn(Login model);
+        Task<IdentityResult> Register(UserDTO model);
+        Task<LoginResultDTO> LogIn(LoginDTO model);
+        Task<UserDTO> GetUser(string email);
         Task SignOut();
-        Task<OperationResult<string>> ConfirmEmail(string userId, string code);
+
+        Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code);
+        
     }
 }
