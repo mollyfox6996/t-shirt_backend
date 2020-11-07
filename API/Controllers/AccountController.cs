@@ -1,4 +1,4 @@
-﻿using Domain.DTOs;
+﻿using Services.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IdentityResult> Register(UserDTO model) => await _userService.Register(model);
+        public async Task<IdentityResult> Register(UserForRegisterDTO model) => await _userService.Register(model);
 
         [HttpPost]
         [Route("login")]
@@ -43,7 +43,7 @@ namespace API.Controllers
         [Authorize]
         [HttpGet]
         [Route("getCurrentUser")]
-        public async Task<UserDTO> GetCurrentUser()
+        public async Task<UserForReturnDTO> GetCurrentUser()
         {
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
             return await _userService.GetUser(email);

@@ -1,12 +1,11 @@
-language: csharp
-dist: trusty  
+os: linux
+language: csharp 
 solution: TshirtBackend.sln
-sudo: required
 mono: none
 dotnet: 3.1.401
 before_script:
   - dotnet restore
 script:
   
-  - dotnet build -c Release TshirtBackend.sln
+  - dotnet build -c Release
   

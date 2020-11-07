@@ -1,4 +1,4 @@
-﻿using Domain.DTOs;
+﻿using Services.DTOs;
 using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -67,7 +67,7 @@ namespace Services
             return result;
         }
 
-        public async Task<IdentityResult> Register(UserDTO model)
+        public async Task<IdentityResult> Register(UserForRegisterDTO model)
         {
             var user = new AppUser
             {
@@ -128,14 +128,14 @@ namespace Services
 
         }
 
-        public async Task<UserDTO> GetUser(string email)
+        public async Task<UserForReturnDTO> GetUser(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            UserDTO userResult = new UserDTO
+            UserForReturnDTO userResult = new UserForReturnDTO
             {
                 DisplayName = user.DisplayName,
                 Email = user.Email,
-                UserId = user.Id
+                
             };
             return userResult;
 
