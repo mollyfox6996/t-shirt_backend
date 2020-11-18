@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lsNkdJpmEbMh45KjRmwCweM1FeLWjoFh/zixfh6WjdL33+vlajQ1k8m5N1jQh9079mpu4WknigoXMikGDl+wjw==",
+  "dgSpecHash": "8GgW5gd4ajKwCbIvIZ8d1M3yq3n4ylMpsPtUrXRwYQmbXJCqPKv5jxQI/uxm+u/XfVfzk/7z7wUZDrK2jtVqzA==",
   "success": true,
   "projectFilePath": "C:\\AIS\\tshirt\\t-shirt_backend\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\37529\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\37529\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\mailkit\\2.9.0\\mailkit.2.9.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -100,7 +102,7 @@
     "C:\\Users\\37529\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\37529\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\37529\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

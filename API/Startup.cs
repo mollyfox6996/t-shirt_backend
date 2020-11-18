@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Extensions;
+using AutoMapper;
+using Domain.Interfaces;
+using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using Services.Mappers;
 
 namespace API
 {
@@ -27,8 +30,11 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
+            services.ConfigureTshirtRepository();
             services.ConfigureIdentity(Configuration);
+            services.ConfigureTshirtService();
             services.ConfigureTokenService();
             services.ConfigureEmailService();
             services.ConfigureUserService();

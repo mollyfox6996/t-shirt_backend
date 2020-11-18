@@ -28,6 +28,7 @@ namespace Services
             {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, user.DisplayName),
+                //new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id)
 
 
 

@@ -10,7 +10,6 @@ namespace Services.Interfaces
         Task<LoginResultDTO> LogIn(LoginDTO model);
         Task<UserForReturnDTO> GetUser(string email);
         Task SignOut();
-
         Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code);
         
     }

@@ -33,7 +33,7 @@ namespace Services
         public async Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code)
         {
             OperationResultDTO<string> result = new OperationResultDTO<string>();
-            AppUser user = _userManager.Users.FirstOrDefault(x => x.Id == userId);
+            AppUser user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
             IdentityOptions options = new IdentityOptions();
 
             if (userId == null || code == null)

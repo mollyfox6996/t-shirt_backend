@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Domain.Entities;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Domain.Interfaces;
+using Infrastructure;
 
 namespace API.Extensions
 {
@@ -23,6 +25,8 @@ namespace API.Extensions
         public static void ConfigureEmailService(this IServiceCollection services) => services.AddScoped(typeof(IEmailService), typeof(EmailService));
         public static void ConfigureTokenService(this IServiceCollection services) => services.AddScoped(typeof(ITokenService), typeof(TokenService));
         public static void ConfigureUserService(this IServiceCollection services) => services.AddScoped(typeof(IUserService), typeof(UserService));
+        public static void ConfigureTshirtService(this IServiceCollection services) => services.AddScoped(typeof(ITshirtService), typeof(TshirtService));
+        public static void ConfigureTshirtRepository(this IServiceCollection services) => services.AddScoped(typeof(ITshirtRepository), typeof(TShirtRepository));
 
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
