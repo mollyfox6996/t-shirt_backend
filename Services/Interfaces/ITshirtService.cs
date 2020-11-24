@@ -14,6 +14,7 @@ namespace Services.Interfaces
         Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id);
         Task<IEnumerable<TShirtToReturnDTO>> GetAllByCurrentUserAsync(string email);
         Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
+        Task<IEnumerable<GenderDTO>> GetGendersAsync();
         Task<IEnumerable<TShirtToReturnDTO>> GetByUserAsync(string name);
     }
 }

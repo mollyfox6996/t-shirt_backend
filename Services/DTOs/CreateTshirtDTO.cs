@@ -21,6 +21,9 @@ namespace Services.DTOs
         public string Category { get; set; }
 
         [Required]
+        public string Gender { get; set; }
+
+        [Required]
         public string PictureUrl { get; set; }
         
     }

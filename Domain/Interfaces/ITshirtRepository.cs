@@ -13,6 +13,8 @@ namespace Domain.Interfaces
         Task CreateTShirtAsync(TShirt shirt);
         Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId);
         Task<IEnumerable<Category>> GetCategoriesAsync();
+        Task<IEnumerable<Gender>> GetGendersAsync();
+        Task<Gender> GetGenderAsync(string name);
         Task<Category> GetCategoryAsync(string name);
         Task<IEnumerable<TShirt>> GetByAuthorAsync(string authorName);
 

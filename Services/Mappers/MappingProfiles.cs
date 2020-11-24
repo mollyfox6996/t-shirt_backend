@@ -13,8 +13,10 @@ namespace Services.Mappers
         {
             CreateMap<TShirt, TShirtToReturnDTO>()
                 .ForMember(p => p.Category, p => p.MapFrom(s => s.Category.Name))
+                .ForMember(p => p.Gender, p => p.MapFrom(s => s.Gender.Name))
                 .ForMember(p => p.AuthorName, p => p.MapFrom(s => s.User.DisplayName));
             CreateMap<Category, CategoryDTO>();
+            CreateMap<Gender, GenderDTO>();
         }
     }
 }

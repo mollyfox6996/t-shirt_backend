@@ -56,6 +56,10 @@ namespace API.Controllers
         public async Task<IEnumerable<CategoryDTO>> GetCategories() => await _tshirtService.GetCategoriesAsync();
 
         [HttpGet]
+        [Route("genders")]
+        public async Task<IEnumerable<GenderDTO>> GetGenders() => await _tshirtService.GetGendersAsync();
+
+        [HttpGet]
         [Route("getByAuthor/{name}")]
         public async Task<IEnumerable<TShirtToReturnDTO>> GetByAuthorName(string name) => await _tshirtService.GetByUserAsync(name);
     }
