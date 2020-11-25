@@ -30,6 +30,7 @@ namespace Services
             OperationResultDTO<string> result = new OperationResultDTO<string>();
             AppUser user = await _userManager.FindByEmailAsync(email);
             Category category = await _tshirtRepository.GetCategoryAsync(model.Category);
+            Gender gender = await _tshirtRepository.GetGenderAsync(model.Gender);
             TShirt shirt = new TShirt
             {
                 Name = model.Name,
@@ -38,6 +39,7 @@ namespace Services
                 Price = model.Price,
                 User = user,
                 Category = category,
+                Gender = gender,
                 CreateDate = DateTime.Now.ToString("d")
             };
 
@@ -96,6 +98,12 @@ namespace Services
         {
             var result = await _tshirtRepository.GetCategoriesAsync();
             return _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDTO>>(result);
+        }
+
+        public async Task<IEnumerable<GenderDTO>> GetGendersAsync()
+        {
+            var result = await _tshirtRepository.GetGendersAsync();
+            return _mapper.Map<IEnumerable<Gender>, IEnumerable<GenderDTO>>(result);
         }
 
         public async Task<IEnumerable<TShirtToReturnDTO>> GetByUserAsync(string name)

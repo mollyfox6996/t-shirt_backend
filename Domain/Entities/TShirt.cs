@@ -29,6 +29,8 @@ namespace Domain.Entities
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
         public string UserId { get; set; }
         public AppUser User { get; set; }
 
