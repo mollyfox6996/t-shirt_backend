@@ -6,6 +6,7 @@ using Services.Interfaces;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System;
 
 namespace API.Controllers
 {
@@ -14,9 +15,11 @@ namespace API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILoggerService _logger;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, ILoggerService logger)
         {
+            _logger = logger;
             _userService = userService;
         }
 

@@ -848,6 +848,28 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "NLog/4.7.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {}
+        }
+      },
+      "NLog.Extensions.Logging/1.6.5": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "3.0.0",
+          "NLog": "4.7.4"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/NLog.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/NLog.Extensions.Logging.dll": {}
+        }
+      },
       "Portable.BouncyCastle/1.8.5": {
         "type": "package",
         "compile": {
@@ -1947,6 +1969,7 @@
           "MailKit": "2.9.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.IdentityModel.Tokens": "6.8.0",
+          "NLog.Extensions.Logging": "1.6.5",
           "System.IdentityModel.Tokens.Jwt": "6.8.0"
         },
         "compile": {
@@ -3200,6 +3223,62 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "NLog/4.7.4": {
+      "sha512": "gSGX/ur0P3jp17H37HW7ycXR6L1578tQbilf4HLX1t2viCDFgtwEsfHMPf0/jcuf7/qqGgoU/vKgyQ9hzxuOEQ==",
+      "type": "package",
+      "path": "nlog/4.7.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid44/NLog.dll",
+        "lib/monoandroid44/NLog.xml",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net40-client/NLog.dll",
+        "lib/net40-client/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "lib/sl4/NLog.dll",
+        "lib/sl4/NLog.xml",
+        "lib/sl5/NLog.dll",
+        "lib/sl5/NLog.xml",
+        "lib/wp8/NLog.dll",
+        "lib/wp8/NLog.xml",
+        "lib/xamarinios10/NLog.dll",
+        "lib/xamarinios10/NLog.xml",
+        "nlog.4.7.4.nupkg.sha512",
+        "nlog.nuspec"
+      ]
+    },
+    "NLog.Extensions.Logging/1.6.5": {
+      "sha512": "f+7W4DhNkpFdg2X6fNR8Ts06TSM9Hd2BdfXem3esTFGR9cAVdQRPwf/N0H0Fc1vidrLJVETkmywXG/0Qz/lxjw==",
+      "type": "package",
+      "path": "nlog.extensions.logging/1.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net451/NLog.Extensions.Logging.dll",
+        "lib/net451/NLog.Extensions.Logging.xml",
+        "lib/net461/NLog.Extensions.Logging.dll",
+        "lib/net461/NLog.Extensions.Logging.xml",
+        "lib/netcoreapp3.0/NLog.Extensions.Logging.dll",
+        "lib/netcoreapp3.0/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.3/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.3/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.5/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.5/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.0/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.0/NLog.Extensions.Logging.xml",
+        "nlog.extensions.logging.1.6.5.nupkg.sha512",
+        "nlog.extensions.logging.nuspec"
       ]
     },
     "Portable.BouncyCastle/1.8.5": {
@@ -6695,19 +6774,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\37529\\.nuget\\packages\\": {}
+    "C:\\Users\\bfmvs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\API\\API.csproj",
+      "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
-      "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\API\\obj\\",
+      "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+      "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6719,13 +6798,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
+            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
             },
-            "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj": {
-              "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj"
+            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj": {
+              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj"
             }
           }
         }
@@ -6738,7 +6816,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
@@ -6805,7 +6882,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

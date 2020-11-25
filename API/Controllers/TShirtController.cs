@@ -19,9 +19,11 @@ namespace API.Controllers
     public class TShirtController : ControllerBase
     {
         private readonly ITshirtService _tshirtService;
+        private readonly ILoggerService _logger;
 
-        public TShirtController(ITshirtService tshirtService)
+        public TShirtController(ITshirtService tshirtService, ILoggerService logger)
         {
+            _logger = logger;
             _tshirtService = tshirtService;
         }
 

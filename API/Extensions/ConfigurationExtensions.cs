@@ -101,6 +101,8 @@ namespace API.Extensions
             });
 
         }
-      
+
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+            services.AddScoped<ILoggerService, LoggerService>();
     }
 }
