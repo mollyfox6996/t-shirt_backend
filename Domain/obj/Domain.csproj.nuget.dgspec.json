@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {}
   },
   "projects": {
@@ -16,22 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj": {}
-  },
-  "projects": {
-    "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

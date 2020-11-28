@@ -10,12 +10,12 @@ namespace Domain.Interfaces
         Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters);
         Task<TShirt> GetTShirtByIdAsync(int id);
         Task CreateTShirtAsync(TShirt shirt);
-        Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId);
+        Task<PagedList<TShirt>> GetTshirtByCurrentUserAsync(string userId, TShirtParameters tshirtParameters);
         Task<IEnumerable<Category>> GetCategoriesAsync();
         Task<IEnumerable<Gender>> GetGendersAsync();
         Task<Gender> GetGenderAsync(string name);
         Task<Category> GetCategoryAsync(string name);
-        Task<IEnumerable<TShirt>> GetByAuthorAsync(string authorName);
+        Task<PagedList<TShirt>> GetByAuthorAsync(string authorName, TShirtParameters tshirtParameters);
 
     }
 }

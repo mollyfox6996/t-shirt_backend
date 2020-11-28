@@ -6793,16 +6793,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\37529\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Sergey\\.nuget\\packages\\": {}
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
       "projectName": "Services",
       "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
@@ -6811,16 +6806,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Services\\Services.csproj",
-      "projectName": "Services",
-      "projectPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Services\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6834,19 +6819,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-<<<<<<< HEAD
             "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
               "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj"
             },
             "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
               "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
-=======
-            "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj"
-            },
-            "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
             }
           }
         }
@@ -6904,5 +6881,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\AIS\\tshirt\\t-shirt_backend\\Services\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

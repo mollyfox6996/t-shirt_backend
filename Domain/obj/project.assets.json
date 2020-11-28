@@ -1392,16 +1392,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\37529\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Sergey\\.nuget\\packages\\": {}
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
       "projectName": "Domain",
       "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
@@ -1410,16 +1405,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "d:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "d:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-      "outputPath": "d:\\Programming\\Git\\AISNovations\\#4 - Project\\t-shirt_backend\\t-shirt_backend\\Domain\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 29f334b3f2a14bc24b0b9f063bf2b7a7cb343ca7
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1472,5 +1457,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

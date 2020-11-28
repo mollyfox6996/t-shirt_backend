@@ -12,9 +12,9 @@ namespace Services.Interfaces
         Task<PagedList<TShirt>> GetTShirtsAsync(TShirtParameters tshirtParameters);
         //Task<PagedList<TShirtToReturnDTO>> GetTShirtsAsync(TShirtParameters tshirtParameters);
         Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id);
-        Task<IEnumerable<TShirtToReturnDTO>> GetAllByCurrentUserAsync(string email);
+        Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters);
         Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
         Task<IEnumerable<GenderDTO>> GetGendersAsync();
-        Task<IEnumerable<TShirtToReturnDTO>> GetByUserAsync(string name);
+        Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters);
     }
 }

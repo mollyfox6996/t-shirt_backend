@@ -53,10 +53,13 @@ namespace API.Controllers
         [Authorize]
         [HttpGet]
         [Route("getByUser")]
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetByUserId()
+        public async Task<IEnumerable<TShirtToReturnDTO>> GetByUserId([FromQuery] TShirtParameters tshirtParameters)
         {
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
-            return await _tshirtService.GetAllByCurrentUserAsync(email);
+            var tshirtsWithMetadata = await _tshirtService.GetAllByCurrentUserAsync(email, tshirtParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+
+            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
         }
 
         [HttpGet]
@@ -69,6 +72,13 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("getByAuthor/{name}")]
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetByAuthorName(string name) => await _tshirtService.GetByUserAsync(name);
+        public async Task<IEnumerable<TShirtToReturnDTO>> GetByAuthorName(string name, [FromQuery] TShirtParameters tshirtParameters)
+        {
+            var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+
+            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
+        }
+        
     }
 }

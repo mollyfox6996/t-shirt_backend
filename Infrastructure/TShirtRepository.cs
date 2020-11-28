@@ -25,16 +25,16 @@ namespace Infrastructure
 
         public async Task<TShirt> GetTShirtByIdAsync(int id) => await _context.TShirts.Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).FirstOrDefaultAsync(x => x.Id == id);
 
-        public async Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters) => PagedList<TShirt>.ToPagedList(await _context.TShirts.ToListAsync(), tshirtParameters.PageNumber, tshirtParameters.PageSize);
+        public async Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters) => PagedList<TShirt>.ToPagedList(await _context.TShirts.Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync(), tshirtParameters.PageNumber, tshirtParameters.PageSize);
 
-        public async Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId) => await _context.TShirts.Where(x => x.UserId == userId).Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync();
+        public async Task<PagedList<TShirt>> GetTshirtByCurrentUserAsync(string userId, TShirtParameters tshirtParameters) => PagedList<TShirt>.ToPagedList(await _context.TShirts.Where(x => x.UserId == userId).Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync(), tshirtParameters.PageNumber, tshirtParameters.PageSize);
 
         public async Task<IEnumerable<Category>> GetCategoriesAsync() => await _context.Categories.ToListAsync();
 
         public async Task<Category> GetCategoryAsync(string name) => await _context.Categories.FirstOrDefaultAsync(p => p.Name == name);
         public async Task<IEnumerable<Gender>> GetGendersAsync() => await _context.Genders.ToListAsync();
         public async Task<Gender> GetGenderAsync(string name) => await _context.Genders.FirstOrDefaultAsync(p => p.Name == name);
-        public async Task<IEnumerable<TShirt>> GetByAuthorAsync(string authorName) => await _context.TShirts.Where(p => p.User.DisplayName == authorName).Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync();
+        public async Task<PagedList<TShirt>> GetByAuthorAsync(string authorName, TShirtParameters tshirtParameters) => PagedList<TShirt>.ToPagedList(await _context.TShirts.Where(p => p.User.DisplayName == authorName).Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync(), tshirtParameters.PageNumber, tshirtParameters.PageSize);
 
     }
 }

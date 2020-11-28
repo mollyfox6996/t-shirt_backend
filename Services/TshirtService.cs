@@ -69,11 +69,10 @@ namespace Services
         //    return _mapper.Map<PagedList<TShirtToReturnDTO>>(result);
         //}
 
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetAllByCurrentUserAsync(string email)
+        public async Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters)
         {
             AppUser user = await _userManager.FindByEmailAsync(email);
-            var result = await _tshirtRepository.GetTshirtByCurrentUserAsync(user.Id);
-            return _mapper.Map<IEnumerable<TShirt>, IEnumerable<TShirtToReturnDTO>>(result);
+            return await _tshirtRepository.GetTshirtByCurrentUserAsync(user.Id, tshirtParameters);
         }
 
         public async Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id) 
@@ -109,10 +108,9 @@ namespace Services
             return _mapper.Map<IEnumerable<Gender>, IEnumerable<GenderDTO>>(result);
         }
 
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetByUserAsync(string name)
+        public async Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters)
         {
-            var result = await _tshirtRepository.GetByAuthorAsync(name);
-            return _mapper.Map<IEnumerable<TShirt>, IEnumerable<TShirtToReturnDTO>>(result);
+            return await _tshirtRepository.GetByAuthorAsync(name, tshirtParameters);
         }
     }
 }
