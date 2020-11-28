@@ -1,14 +1,13 @@
 ﻿using Domain.Entities;
-using System;
+using Domain.RequestFeatures;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
     public interface ITshirtRepository
     {
-        Task<IEnumerable<TShirt>> GetTShirtListAsync();
+        Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters);
         Task<TShirt> GetTShirtByIdAsync(int id);
         Task CreateTShirtAsync(TShirt shirt);
         Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId);
