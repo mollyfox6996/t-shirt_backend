@@ -1,16 +1,15 @@
-﻿using System;
+﻿using AutoMapper;
+using Domain.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Services.DTOs;
+using Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Domain.Entities;
-using Domain.Interfaces;
-using Infrastructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Services.DTOs;
-using Services.Interfaces;
 
 namespace API.Controllers
 {
@@ -20,9 +19,11 @@ namespace API.Controllers
     {
         private readonly ITshirtService _tshirtService;
         private readonly ILoggerService _logger;
+        private readonly IMapper _mapper;
 
-        public TShirtController(ITshirtService tshirtService, ILoggerService logger)
+        public TShirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper)
         {
+            _mapper = mapper;
             _logger = logger;
             _tshirtService = tshirtService;
         }
@@ -37,8 +38,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetAll() => await _tshirtService.GetAllAsync();
+        public async Task<IEnumerable<TShirtToReturnDTO>> GetTShirts([FromQuery] TShirtParameters tshirtParameters)
+        {
+            var tshirtsWithMetadata =  await _tshirtService.GetTShirtsAsync(tshirtParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+            
+            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
+        }
 
         [HttpGet]
         [Route("{id}")]

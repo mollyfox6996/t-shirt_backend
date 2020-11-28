@@ -1,11 +1,10 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Domain.RequestFeatures;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure
@@ -26,7 +25,7 @@ namespace Infrastructure
 
         public async Task<TShirt> GetTShirtByIdAsync(int id) => await _context.TShirts.Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).FirstOrDefaultAsync(x => x.Id == id);
 
-        public async Task<IEnumerable<TShirt>> GetTShirtListAsync() => await _context.TShirts.Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync();
+        public async Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters) => PagedList<TShirt>.ToPagedList(await _context.TShirts.ToListAsync(), tshirtParameters.PageNumber, tshirtParameters.PageSize);
 
         public async Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId) => await _context.TShirts.Where(x => x.UserId == userId).Include(p => p.Category).Include(p => p.Gender).Include(p => p.User).ToListAsync();
 

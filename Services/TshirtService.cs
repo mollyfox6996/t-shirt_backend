@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
-using Infrastructure.Context;
+using Domain.RequestFeatures;
 using Microsoft.AspNetCore.Identity;
 using Services.DTOs;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Services
@@ -60,11 +58,16 @@ namespace Services
             
         }
 
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetAllAsync()
+        public async Task<PagedList<TShirt>> GetTShirtsAsync(TShirtParameters tshirtParameters)
         {
-            var result = await _tshirtRepository.GetTShirtListAsync();
-            return _mapper.Map<IEnumerable<TShirt>, IEnumerable<TShirtToReturnDTO>>(result);
+            return await _tshirtRepository.GetTShirtListAsync(tshirtParameters);
         }
+
+        //public async Task<PagedList<TShirtToReturnDTO>> GetTShirtsAsync(TShirtParameters tshirtParameters)
+        //{
+        //    var result = await _tshirtRepository.GetTShirtListAsync(tshirtParameters);
+        //    return _mapper.Map<PagedList<TShirtToReturnDTO>>(result);
+        //}
 
         public async Task<IEnumerable<TShirtToReturnDTO>> GetAllByCurrentUserAsync(string email)
         {
