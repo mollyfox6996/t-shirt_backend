@@ -10,6 +10,8 @@ namespace Infrastructure.Context
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
+        public DbSet<CustomBasket> CustomBaskets { get; set; }
+        public DbSet<BasketItem> Items { get; set; }
         public DbSet<TShirt> TShirts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gender> Genders { get; set; }

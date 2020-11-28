@@ -84,9 +84,11 @@ namespace Services
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
                 var url = "http://localhost:4200/account/accountConfirm";
-
+                var displayName = user.DisplayName;
                 var callbackUrl = url + "?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
-                await _emailService.SendEmail(user.Email, user.DisplayName, HtmlEncoder.Default.Encode(callbackUrl), "Activation link");
+                var text =  $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email adress {callbackUrl}</p>";
+
+                await _emailService.SendEmail(user.Email, HtmlEncoder.Default.Encode(callbackUrl), "Activation link", text);
 
 
             }

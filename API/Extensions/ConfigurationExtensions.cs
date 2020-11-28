@@ -69,9 +69,9 @@ namespace API.Extensions
                 options.AddPolicy("CorsPolicy", builder =>
                 {
                     builder.AllowAnyHeader()
-                    .AllowAnyHeader()
+                    .AllowAnyMethod()
                     .AllowAnyOrigin()
-                    .WithOrigins(configuration["AngularUrl"]);
+                    ;
                 });
             });
         }
@@ -104,5 +104,8 @@ namespace API.Extensions
 
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddScoped<ILoggerService, LoggerService>();
+
+        public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
+        public static void ConfigureBasketService(this IServiceCollection services) => services.AddScoped(typeof(IBasketService), typeof(BasketService));
     }
 }

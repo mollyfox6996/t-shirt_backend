@@ -1,0 +1,24 @@
+2020-11-28 11:47:35.0480 ERROR Somesthing went wrong: Недопустимое имя объекта "Baskets".
+2020-11-28 11:54:53.1756 ERROR Somesthing went wrong: Недопустимое имя объекта "CustomBaskets".
+2020-11-28 12:45:06.1446 ERROR Somesthing went wrong: Object reference not set to an instance of an object.
+2020-11-28 12:45:08.0199 ERROR Somesthing went wrong: Object reference not set to an instance of an object.
+2020-11-28 13:27:42.4864 ERROR Somesthing went wrong: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+BasketDTO -> CustomBasket
+Services.DTOs.BasketDTO -> Domain.Entities.CustomBasket
+2020-11-28 13:52:58.0622 ERROR Somesthing went wrong: Value cannot be null. (Parameter 'entity')
+2020-11-28 15:53:01.9648 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 15:59:57.9601 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:09:44.4155 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:10:45.3187 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:22:45.3378 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:23:26.9514 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:42:24.7696 ERROR Somesthing went wrong: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+2020-11-28 16:49:18.4090 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:18:25.3637 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:21:47.7329 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:24:49.6659 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:39:58.8348 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:57:49.2307 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.
+2020-11-28 17:59:44.2740 ERROR Somesthing went wrong: An error occurred while updating the entries. See the inner exception for details.

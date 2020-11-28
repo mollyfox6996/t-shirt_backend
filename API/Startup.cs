@@ -38,11 +38,13 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
             services.ConfigureTshirtRepository();
+            services.ConfigureBasketRepository();
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();
             services.ConfigureTokenService();
             services.ConfigureEmailService();
             services.ConfigureUserService();
+            services.ConfigureBasketService();
             services.ConfigureSwagger();
             services.ConfigureCors(Configuration);
             

@@ -14,7 +14,7 @@ namespace Services
             _configuration = configuration;
         }
 
-        public async Task SendEmail(string email, string displayName, string callbackUrl, string subject)
+        public async Task SendEmail(string email, string callbackUrl, string subject, string text)
         {
             MimeMessage emailMessage = new MimeMessage();
 
@@ -23,7 +23,7 @@ namespace Services
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
             {
-                Text = $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email adress {callbackUrl}</p>"
+                Text = text
             };
             
 

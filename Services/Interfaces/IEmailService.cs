@@ -8,6 +8,6 @@ namespace Services.Interfaces
 {
     public interface IEmailService
     {
-        Task SendEmail(string email, string displayName, string callbackUrl, string subject);
+        Task SendEmail(string email, string callbackUrl, string subject, string text);
     }
 }
