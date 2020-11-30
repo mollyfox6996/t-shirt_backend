@@ -28,6 +28,12 @@ namespace API.Controllers
             _tshirtService = tshirtService;
         }
 
+        private void SetResponseHeaders(MetaData metaData)
+        {
+            Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
+        }
+
         [Authorize]
         [HttpPost]
         [Route("create")]
@@ -41,7 +47,7 @@ namespace API.Controllers
         public async Task<IEnumerable<TShirtToReturnDTO>> GetTShirts([FromQuery] TShirtParameters tshirtParameters)
         {
             var tshirtsWithMetadata =  await _tshirtService.GetTShirtsAsync(tshirtParameters);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+            SetResponseHeaders(tshirtsWithMetadata.MetaData);
             
             return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
         }
@@ -57,7 +63,7 @@ namespace API.Controllers
         {
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
             var tshirtsWithMetadata = await _tshirtService.GetAllByCurrentUserAsync(email, tshirtParameters);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+            SetResponseHeaders(tshirtsWithMetadata.MetaData);
 
             return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
         }
@@ -75,7 +81,7 @@ namespace API.Controllers
         public async Task<IEnumerable<TShirtToReturnDTO>> GetByAuthorName(string name, [FromQuery] TShirtParameters tshirtParameters)
         {
             var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(tshirtsWithMetadata.MetaData));
+            SetResponseHeaders(tshirtsWithMetadata.MetaData);
 
             return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
         }

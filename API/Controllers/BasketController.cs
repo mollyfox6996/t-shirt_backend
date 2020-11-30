@@ -26,7 +26,7 @@ namespace API.Controllers
         public async Task<BasketDTO> GetBasketAsync(string id) => await _basketService.GetBasketAsync(id);
 
         [Authorize]
-        [HttpPatch]
+        [HttpPut]
         public async Task<BasketDTO> UpdateBasketAsync(BasketDTO basket) => await _basketService.UpdateBasketAsync(basket);
 
         [Authorize]
