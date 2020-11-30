@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Domain.Entities;
 using System.Linq;
+using Domain.Entities.OrderAggregate;
 
 namespace Infrastructure.Context
 {
@@ -41,7 +42,7 @@ namespace Infrastructure.Context
                         new Gender {Id = 2, Name = "Female"}
                     }
                 );
-            
+
             foreach(var item in builder.Model.GetEntityTypes())
             {
                 var props = item.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
