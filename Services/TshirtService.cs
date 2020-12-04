@@ -6,10 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Services.DTOs;
 using Services.Interfaces;
 using System;
-<<<<<<< HEAD
-=======
-using System.Collections.Generic;
->>>>>>> refs/remotes/origin/dev
 using System.Threading.Tasks;
 
 namespace Services
@@ -98,65 +94,6 @@ namespace Services
                 result.Data = ex.Message;
                 return result;
             }
-<<<<<<< HEAD
-=======
-            
-        }
-
-        public async Task<PagedList<TShirt>> GetTShirtsAsync(TShirtParameters tshirtParameters)
-        {
-            return await _tshirtRepository.GetTShirtListAsync(tshirtParameters);
-        }
-
-        //public async Task<PagedList<TShirtToReturnDTO>> GetTShirtsAsync(TShirtParameters tshirtParameters)
-        //{
-        //    var result = await _tshirtRepository.GetTShirtListAsync(tshirtParameters);
-        //    return _mapper.Map<PagedList<TShirtToReturnDTO>>(result);
-        //}
-
-        public async Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters)
-        {
-            AppUser user = await _userManager.FindByEmailAsync(email);
-            return await _tshirtRepository.GetTshirtByCurrentUserAsync(user.Id, tshirtParameters);
-        }
-
-        public async Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id) 
-        {
-            var result = await _tshirtRepository.GetTShirtByIdAsync(id);
-            if (result == null)
-            {
-                return new OperationResultDTO<TShirtToReturnDTO>
-                {
-                    Success = false,
-                    Message = "Product not found",
-                    Data = null
-                };
-            }
-            return new OperationResultDTO<TShirtToReturnDTO>
-            {
-                Success = true,
-                Message = null,
-                Data = _mapper.Map<TShirt, TShirtToReturnDTO>(result)
-            };
-            
-        }
-
-        public async Task<IEnumerable<CategoryDTO>> GetCategoriesAsync()
-        {
-            var result = await _tshirtRepository.GetCategoriesAsync();
-            return _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDTO>>(result);
-        }
-
-        public async Task<IEnumerable<GenderDTO>> GetGendersAsync()
-        {
-            var result = await _tshirtRepository.GetGendersAsync();
-            return _mapper.Map<IEnumerable<Gender>, IEnumerable<GenderDTO>>(result);
-        }
-
-        public async Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters)
-        {
-            return await _tshirtRepository.GetByAuthorAsync(name, tshirtParameters);
->>>>>>> refs/remotes/origin/dev
         }
     }
 }

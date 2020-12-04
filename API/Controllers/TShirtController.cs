@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-<<<<<<< HEAD
 using Domain.Entities;
-=======
->>>>>>> refs/remotes/origin/dev
 using Domain.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -25,14 +22,10 @@ namespace API.Controllers
         private readonly ITshirtService _tshirtService;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
-<<<<<<< HEAD
         private readonly UserManager<AppUser> _userManager;
 
         public TShirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper, UserManager<AppUser> userManager)
-=======
 
-        public TShirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper)
->>>>>>> refs/remotes/origin/dev
         {
             _mapper = mapper;
             _logger = logger;
@@ -41,18 +34,6 @@ namespace API.Controllers
         }
 
         private void SetResponseHeaders(MetaData metaData)
-<<<<<<< HEAD
-=======
-        {
-            Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
-        }
-
-        [Authorize]
-        [HttpPost]
-        [Route("create")]
-        public async Task<OperationResultDTO<string>> Create(CreateTshirtDTO model)
->>>>>>> refs/remotes/origin/dev
         {
             Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
@@ -60,7 +41,6 @@ namespace API.Controllers
 
 
         [HttpGet]
-<<<<<<< HEAD
         public async Task<IActionResult> GetTShirts([FromQuery] TShirtParameters tshirtParameters)
         {
             if (tshirtParameters is null)
@@ -75,14 +55,6 @@ namespace API.Controllers
             var tshirtsPage = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
             
             return Ok(tshirtsPage);
-=======
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetTShirts([FromQuery] TShirtParameters tshirtParameters)
-        {
-            var tshirtsWithMetadata =  await _tshirtService.GetTShirtsAsync(tshirtParameters);
-            SetResponseHeaders(tshirtsWithMetadata.MetaData);
-            
-            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
->>>>>>> refs/remotes/origin/dev
         }
 
         [HttpGet]
@@ -107,11 +79,8 @@ namespace API.Controllers
         [Authorize]
         [HttpGet]
         [Route("getByUser")]
-<<<<<<< HEAD
         public async Task<IActionResult> GetByUserId([FromQuery] TShirtParameters tshirtParameters)
-=======
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetByUserId([FromQuery] TShirtParameters tshirtParameters)
->>>>>>> refs/remotes/origin/dev
+
         {
             if (tshirtParameters is null)
             {
@@ -123,15 +92,10 @@ namespace API.Controllers
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
             var tshirtsWithMetadata = await _tshirtService.GetAllByCurrentUserAsync(email, tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
-<<<<<<< HEAD
             var tshirts = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
             _logger.LogInfo($"Recieved a t-shirt for user with email: {email}.");
 
             return Ok(tshirts);
-=======
-
-            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
->>>>>>> refs/remotes/origin/dev
         }
 
         [HttpGet]
@@ -145,7 +109,6 @@ namespace API.Controllers
                 return BadRequest("User name is null or empty.");
             }
 
-<<<<<<< HEAD
             if (tshirtParameters is null)
             {
                 _logger.LogError("TShirtParameters object send from client is null.");
@@ -186,17 +149,5 @@ namespace API.Controllers
 
             return Ok(tshirt);
         }
-=======
-        [HttpGet]
-        [Route("getByAuthor/{name}")]
-        public async Task<IEnumerable<TShirtToReturnDTO>> GetByAuthorName(string name, [FromQuery] TShirtParameters tshirtParameters)
-        {
-            var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
-            SetResponseHeaders(tshirtsWithMetadata.MetaData);
-
-            return _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
-        }
-        
->>>>>>> refs/remotes/origin/dev
     }
 }

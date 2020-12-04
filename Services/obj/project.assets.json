@@ -6793,27 +6793,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\37529\\.nuget\\packages\\": {}
+    "C:\\Users\\bfmvs\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\Services.csproj",
+      "projectUniqueName": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\Services.csproj",
+      "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
-      "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\obj\\",
-=======
-      "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
-      "projectName": "Services",
-      "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
-      "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\obj\\",
->>>>>>> refs/remotes/origin/dev
+      "outputPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6825,21 +6817,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-<<<<<<< HEAD
-            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj": {
-              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj"
+            "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj": {
+              "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj"
             },
-            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj"
-=======
-            "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj"
-            },
-            "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
->>>>>>> refs/remotes/origin/dev
+            "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -6852,7 +6835,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
@@ -6894,7 +6876,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -6903,7 +6885,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша C:\\AIS\\tshirt\\t-shirt_backend\\Services\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }

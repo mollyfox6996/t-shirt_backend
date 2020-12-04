@@ -1,22 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Extensions;
 using AutoMapper;
-using Domain.Interfaces;
-using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NLog;
 using Services.Interfaces;
 using Services.Mappers;
+using System.IO;
 
 namespace API
 {
@@ -36,14 +28,7 @@ namespace API
             services.AddControllers();
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
-<<<<<<< HEAD
             services.ConfigureRepositoryService();
-            //services.ConfigureTshirtRepository();
-            //services.ConfigureBasketRepository();
-=======
-            services.ConfigureTshirtRepository();
-            services.ConfigureBasketRepository();
->>>>>>> refs/remotes/origin/dev
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();
             services.ConfigureTokenService();
