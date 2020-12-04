@@ -36,9 +36,14 @@ namespace API
             services.AddControllers();
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
+<<<<<<< HEAD
             services.ConfigureRepositoryService();
             //services.ConfigureTshirtRepository();
             //services.ConfigureBasketRepository();
+=======
+            services.ConfigureTshirtRepository();
+            services.ConfigureBasketRepository();
+>>>>>>> refs/remotes/origin/dev
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();
             services.ConfigureTokenService();

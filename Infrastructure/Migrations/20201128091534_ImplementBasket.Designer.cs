@@ -9,7 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
+<<<<<<< HEAD
     [DbContext(typeof(RepositoryContext))]
+=======
+    [DbContext(typeof(AppDbContext))]
+>>>>>>> refs/remotes/origin/dev
     [Migration("20201128091534_ImplementBasket")]
     partial class ImplementBasket
     {

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\Services.csproj": {}
   },
   "projects": {
@@ -12,9 +13,22 @@
         "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
         "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\obj\\",
+=======
+    "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj": {}
+  },
+  "projects": {
+    "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
+        "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\obj\\",
+>>>>>>> refs/remotes/origin/dev
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +40,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +52,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -62,10 +78,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
+<<<<<<< HEAD
     "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -74,9 +91,19 @@
         "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
         "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\obj\\",
+=======
+    "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
+        "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\obj\\",
+>>>>>>> refs/remotes/origin/dev
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,9 +115,15 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+<<<<<<< HEAD
               "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj": {
                 "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj"
+=======
+              "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj"
+>>>>>>> refs/remotes/origin/dev
               }
             }
           }
@@ -103,6 +136,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -138,10 +172,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
+<<<<<<< HEAD
     "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -150,9 +185,19 @@
         "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
         "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Services\\obj\\",
+=======
+    "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
+        "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Services\\obj\\",
+>>>>>>> refs/remotes/origin/dev
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -164,12 +209,21 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+<<<<<<< HEAD
               "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj": {
                 "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Domain\\Domain.csproj"
               },
               "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj"
+=======
+              "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj"
+              },
+              "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
+>>>>>>> refs/remotes/origin/dev
               }
             }
           }
@@ -182,6 +236,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -223,7 +278,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
