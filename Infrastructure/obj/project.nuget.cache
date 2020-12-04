@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kPlsT9w7epauFrV3qTcnWVgIjx7hHXHF2ZAayEtr3jaxRAvKgLsSY9a4kYaTHEfRdJOAzGnspKD5kI80iKX7XA==",
+  "dgSpecHash": "hon9mZsInXag+1TJ9Dqnj3G8c/aNsNq3Msz1DlYfeJOT8kkF06ihjbRj2SqJm/qM3JGiRAirQuxreT1cCKjgYg==",
   "success": true,
-  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend(my changes)\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(RepositoryContext))]
     [Migration("20201118121439_UpdateColumnType")]
     partial class UpdateColumnType
     {

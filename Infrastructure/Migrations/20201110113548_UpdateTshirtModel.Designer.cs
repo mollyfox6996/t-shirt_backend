@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(RepositoryContext))]
     [Migration("20201110113548_UpdateTshirtModel")]
     partial class UpdateTshirtModel
     {

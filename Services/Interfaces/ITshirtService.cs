@@ -1,20 +1,19 @@
-﻿using Services.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
+﻿using Domain.Entities;
+using Domain.RequestFeatures;
+using Services.DTOs;
 using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
     public interface ITshirtService
     {
-        Task<OperationResultDTO<string>> CreateAsync(CreateTshirtDTO model, string email);
-        Task<IEnumerable<TShirtToReturnDTO>> GetAllAsync();
+        Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters);
+        Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters);
+        Task<PagedList<TShirt>> GetTShirtsAsync(TShirtParameters tshirtParameters);
         Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id);
-        Task<IEnumerable<TShirtToReturnDTO>> GetAllByCurrentUserAsync(string email);
-        Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
-        Task<IEnumerable<GenderDTO>> GetGendersAsync();
-        Task<IEnumerable<TShirtToReturnDTO>> GetByUserAsync(string name);
+        Task<OperationResultDTO<string>> CreateAsync(CreateTshirtDTO model, string email);
+
+        //Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
+        //Task<IEnumerable<GenderDTO>> GetGendersAsync();
     }
 }
