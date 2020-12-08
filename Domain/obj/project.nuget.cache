@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0My3x3Ybci4s+bk4Fph0ZaFM1fruiDMFjiNQVIbrQ28UD++bsUViHxMCH/uLNmmTKCRPioN6PHfo05O7vdSjeg==",
+  "dgSpecHash": "qth1LeCk1WW9hBfbLVfhbg+IzGijLnQwpIDIkk05qYa5CHHzH3Vn2chRhz5ak+Vf02aGze7itYJYuKkbl7nk7Q==",
   "success": true,
-  "projectFilePath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
+  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -48,12 +48,5 @@
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4CW3gGm/JPZ3xUJvcQ3PYzf6vODjlXIGV/oK8ygMb2CYvmC9Z/bLoNlTaD4hXcAVe61W4zWEmgWjkv5usk3T1w==",
+  "dgSpecHash": "NPthwmwdfxLPqlW0GksCwkkWBjCnFjiv9/e6IZfgx1akKPvnEmc9VipXM7PQymHJ+fVELIi6HXJmI0HkQlTFhg==",
   "success": true,
-  "projectFilePath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
+  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bfmvs\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
@@ -138,12 +138,5 @@
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

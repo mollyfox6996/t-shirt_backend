@@ -6779,11 +6779,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
+      "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
+      "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
       "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
-      "outputPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\obj\\",
+      "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6799,11 +6799,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
+            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
             },
-            "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj": {
-              "projectPath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj"
+            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj": {
+              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj"
             }
           }
         }
@@ -6885,13 +6885,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

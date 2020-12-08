@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PJKBKBNX8Piu4uztNpOarRhkhKLgLaL3mPjNd8PLcHkyYGrepPdfw9NAlGL++WbtpFf7phdC/EJTWfqkkNwKRA==",
+  "dgSpecHash": "kPlsT9w7epauFrV3qTcnWVgIjx7hHXHF2ZAayEtr3jaxRAvKgLsSY9a4kYaTHEfRdJOAzGnspKD5kI80iKX7XA==",
   "success": true,
-  "projectFilePath": "g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -133,12 +133,5 @@
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\bfmvs\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file g:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
