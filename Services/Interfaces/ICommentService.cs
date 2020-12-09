@@ -8,7 +8,7 @@ namespace Services.Interfaces
 {
     public interface ICommentService
     {
-        Task AddComent(CommentDTO commentDTO);
+        Task AddComent(CreateCommentDTO createCommentDTO, string email);
         Task<IEnumerable<CommentDTO>> GetTshirtComments(int shirtId);
     }
 }

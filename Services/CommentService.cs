@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Services.DTOs;
 using Services.Interfaces;
@@ -16,17 +17,25 @@ namespace Services
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
         private readonly IHubContext<AppHub> _hub;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CommentService(IRepositoryManager repositoryManager, IMapper mapper, IHubContext<AppHub> hub)
+        public CommentService(IRepositoryManager repositoryManager, IMapper mapper, IHubContext<AppHub> hub, UserManager<AppUser> userManager)
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
             _hub = hub;
+            _userManager = userManager;
         }
 
-        public async Task AddComent(CommentDTO commentDTO)
+        public async Task AddComent(CreateCommentDTO createCommentDTO, string email)
         {
-
+            var user = await _userManager.FindByEmailAsync(email);
+            CommentDTO commentDTO = new CommentDTO
+            {
+                AuthorName = user.DisplayName,
+                ShirtId = createCommentDTO.ShirtId, 
+                Text = createCommentDTO.Text
+            };
             var comment = _mapper.Map<Comment>(commentDTO);
             _repositoryManager.Comment.CreateComment(comment);
             await _repositoryManager.SaveAsync();

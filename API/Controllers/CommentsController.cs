@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Services.DTOs;
 using Services.Interfaces;
 using System;
@@ -12,12 +13,13 @@ namespace API.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
-    public class CommetsController : ControllerBase
+    public class CommentsController : ControllerBase
     {
         private readonly ICommentService _commentService;
         private readonly ILoggerService _logger;
+        
 
-        public CommetsController(ICommentService commentService, ILoggerService logger)
+        public CommentsController(ICommentService commentService, ILoggerService logger)
         {
             _commentService = commentService;
             _logger = logger;
@@ -25,7 +27,12 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task AddComment(CommentDTO commentDTO) => await _commentService.AddComent(commentDTO);
+        public async Task<IActionResult> AddComment(CreateCommentDTO createCommentDTO)
+        {
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            await _commentService.AddComent(createCommentDTO, email);
+            return Ok();
+        }
 
         [HttpGet]
         [Route("{id}")]
