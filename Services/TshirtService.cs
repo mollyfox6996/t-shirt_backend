@@ -32,12 +32,12 @@ namespace Services
         public async Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            return await _repositoryManager.TShirt.GetTshirtsByUserAsync(user.Id, tshirtParameters, false);
+            return await _repositoryManager.TShirt.GetTshirtsByUserAsync(user.DisplayName, tshirtParameters, false);
         }
 
-        public async Task<PagedList<TShirt>> GetByUserAsync(string id, TShirtParameters tshirtParameters) =>
+        public async Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters) =>
             await _repositoryManager.TShirt.
-                GetTshirtsByUserAsync(id, tshirtParameters, false);
+                GetTshirtsByUserAsync(name, tshirtParameters, false);
         
 
         public async Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id) 

@@ -116,16 +116,7 @@ namespace API.Controllers
                 return BadRequest("TShirtParameters object is null.");
             }
 
-            var user = await _userManager.FindByNameAsync(name);
-            
-            if (user is null)
-            {
-                _logger.LogError($"User with name: {name} not found.");
-
-                return NotFound();
-            }
-
-            var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(user.Id, tshirtParameters);
+            var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts =  _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
             _logger.LogInfo($"T-shirts recieved from the author with the name: {name}.");

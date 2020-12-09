@@ -1397,19 +1397,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
       "projectName": "Domain",
       "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
       "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\obj\\",
-=======
-      "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
-      "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\obj\\",
->>>>>>> 8888f52240d2ffa27860f185257e80a85ad45bfe
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1465,5 +1457,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

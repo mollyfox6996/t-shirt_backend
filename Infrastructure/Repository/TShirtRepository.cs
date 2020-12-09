@@ -26,9 +26,9 @@ namespace Infrastructure.Repository
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
 
-        public async Task<PagedList<TShirt>> GetTshirtsByUserAsync(string userId, TShirtParameters tshirtParameters, bool trackChanges ) => 
+        public async Task<PagedList<TShirt>> GetTshirtsByUserAsync(string userName, TShirtParameters tshirtParameters, bool trackChanges ) => 
             PagedList<TShirt>
-                .ToPagedList(await FindByCondition(c => c.UserId == userId, trackChanges)
+                .ToPagedList(await FindByCondition(c => c.User.DisplayName == userName, trackChanges)
                 .Include(c => c.Category)
                 .Include(g => g.Gender)
                 .Include(u => u.User)
@@ -38,6 +38,9 @@ namespace Infrastructure.Repository
 
         public async Task<TShirt> GetTShirtByIdAsync(int id, bool trackChanges) => 
             await FindByCondition(c => c.Id == id, trackChanges)
+                .Include(c => c.Category)
+                .Include(g => g.Gender)
+                .Include(u => u.User)
                 .SingleOrDefaultAsync();
 
         public void CreateTShirt(TShirt shirt) => Create(shirt);
