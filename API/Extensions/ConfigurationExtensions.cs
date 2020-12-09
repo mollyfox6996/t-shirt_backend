@@ -29,6 +29,7 @@ namespace API.Extensions
         public static void ConfigureTshirtService(this IServiceCollection services) => services.AddScoped(typeof(ITshirtService), typeof(TshirtService));
         public static void ConfigureLoggerService(this IServiceCollection services) => services.AddScoped<ILoggerService, LoggerService>();
         public static void ConfigureBasketService(this IServiceCollection services) => services.AddScoped(typeof(IBasketService), typeof(BasketService));
+        public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
 
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
@@ -73,7 +74,8 @@ namespace API.Extensions
                 {
                     builder.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowAnyOrigin()
+                    .WithOrigins(configuration["AngularUrl"])
+                    .AllowCredentials();
                     ;
                 });
             });

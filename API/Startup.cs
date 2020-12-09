@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
+using Services;
 using Services.Interfaces;
 using Services.Mappers;
 using System.IO;
@@ -34,6 +35,8 @@ namespace API
             services.ConfigureTokenService();
             services.ConfigureEmailService();
             services.ConfigureUserService();
+            services.ConfigureCommentsService();
+            services.AddSignalR();
             services.ConfigureBasketService();
             services.ConfigureSwagger();
             services.ConfigureCors(Configuration);
@@ -55,7 +58,11 @@ namespace API
             app.UseAuthorization();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TShirt API V1"));
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapHub<AppHub>("/hub");
+                });
         }
     }
 }

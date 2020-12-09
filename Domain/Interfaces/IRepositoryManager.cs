@@ -11,7 +11,7 @@ namespace Domain.Interfaces
         IBasketRepository Basket { get; }
         ICategoryRepository Category { get; }
         IGenderRepository Gender { get; }
-
+        ICommentRepository Comment { get; }
         Task SaveAsync();
     }
 }

@@ -13,6 +13,7 @@ namespace Infrastructure.Context
         public DbSet<TShirt> TShirts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gender> Genders { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
         {

@@ -14,6 +14,7 @@ namespace Infrastructure.Repository
         private IBasketRepository _basketRepository;
         private ICategoryRepository _categoryRepository;
         private IGenderRepository _genderRepository;
+        private ICommentRepository _commentRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -69,6 +70,19 @@ namespace Infrastructure.Repository
                 }
 
                 return _genderRepository;
+            }
+        }
+
+        public ICommentRepository Comment
+        {
+            get
+            {
+                if(_commentRepository is null)
+                {
+                    _commentRepository = new CommentRepository(_repositoryContext);
+                }
+
+                return _commentRepository;
             }
         }
 
