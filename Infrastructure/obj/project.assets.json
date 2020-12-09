@@ -6555,11 +6555,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
       "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\37529\\.nuget\\packages\\",
       "outputPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Infrastructure\\obj\\",
+=======
+      "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+      "projectName": "Infrastructure",
+      "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+      "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\obj\\",
+>>>>>>> 8888f52240d2ffa27860f185257e80a85ad45bfe
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\37529\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6576,8 +6584,13 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj": {
               "projectPath": "C:\\AIS\\tshirt\\t-shirt_backend\\Domain\\Domain.csproj"
+=======
+            "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj": {
+              "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj"
+>>>>>>> 8888f52240d2ffa27860f185257e80a85ad45bfe
             }
           }
         }

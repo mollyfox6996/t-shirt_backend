@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "jhoLPAObpCyAjwUF5FhwaK6qA+g/GeQ2Qpo+ULm2XOLWDp/X8ubEwUcvtDmHUK3vGBIN5jeHd1nebxTpbBE/cQ==",
   "success": true,
   "projectFilePath": "C:\\AIS\\tshirt\\t-shirt_backend\\API\\API.csproj",
+=======
+  "dgSpecHash": "/1nR+Wsdrvv5VSa/CzdXfjOQ1JhoEMp2QWqbAVHRfa8c/+VNtArxZmTbylFHXtaX3kH6dtTeclKBA3QA760lKw==",
+  "success": true,
+  "projectFilePath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
+>>>>>>> 8888f52240d2ffa27860f185257e80a85ad45bfe
   "expectedPackageFiles": [
     "C:\\Users\\37529\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\37529\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

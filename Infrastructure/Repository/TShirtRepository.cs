@@ -3,7 +3,9 @@ using Domain.Interfaces;
 using Domain.RequestFeatures;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
@@ -16,7 +18,7 @@ namespace Infrastructure.Repository
 
         public async Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters, bool trackChanges) => 
             PagedList<TShirt>
-                .ToPagedList(await FindAll(trackChanges)
+                .ToPagedList(await FindByCondition(Filter(tshirtParameters), trackChanges)
                 .Include(c => c.Category)
                 .Include(g => g.Gender)
                 .Include(u => u.User)
@@ -43,5 +45,14 @@ namespace Infrastructure.Repository
         public void UpdateTShirt(TShirt shirt) => Update(shirt);
 
         public void DeleteTShirt(TShirt shirt) => Delete(shirt);
+
+        private Expression<Func<TShirt, bool>> Filter (TShirtParameters tshirtParameters)
+        {
+            Expression<Func<TShirt, bool>> filter = c => 
+            (!string.IsNullOrWhiteSpace(tshirtParameters.Gender) ? c.Gender.Name == tshirtParameters.Gender : true) && 
+            (!string.IsNullOrWhiteSpace(tshirtParameters.Category) ? c.Category.Name == tshirtParameters.Category : true);
+            
+            return filter;
+        }
     }
 }
