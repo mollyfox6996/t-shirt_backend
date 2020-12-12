@@ -12,6 +12,7 @@ namespace Domain.Interfaces
         ICategoryRepository Category { get; }
         IGenderRepository Gender { get; }
         ICommentRepository Comment { get; }
+        ILikeRepository Like { get; }
         Task SaveAsync();
     }
 }

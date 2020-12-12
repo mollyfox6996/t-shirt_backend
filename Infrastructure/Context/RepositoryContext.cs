@@ -14,10 +14,11 @@ namespace Infrastructure.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Like> Likes { get; set; }
         
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

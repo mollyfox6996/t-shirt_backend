@@ -15,6 +15,7 @@ namespace Infrastructure.Repository
         private ICategoryRepository _categoryRepository;
         private IGenderRepository _genderRepository;
         private ICommentRepository _commentRepository;
+        private ILikeRepository _likeRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -83,6 +84,19 @@ namespace Infrastructure.Repository
                 }
 
                 return _commentRepository;
+            }
+        }
+
+        public ILikeRepository Like
+        {
+            get
+            {
+                if (_likeRepository is null)
+                {
+                    _likeRepository = new LikeRepository(_repositoryContext);
+                }
+
+                return _likeRepository;
             }
         }
 
