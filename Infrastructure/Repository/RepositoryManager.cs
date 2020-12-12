@@ -16,6 +16,7 @@ namespace Infrastructure.Repository
         private IGenderRepository _genderRepository;
         private ICommentRepository _commentRepository;
         private ILikeRepository _likeRepository;
+        private IRatingRepository _ratingRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -97,6 +98,19 @@ namespace Infrastructure.Repository
                 }
 
                 return _likeRepository;
+            }
+        }
+
+        public IRatingRepository Rating
+        {
+            get
+            {
+                if (_ratingRepository is null)
+                {
+                    _ratingRepository = new RatingRepository(_repositoryContext);
+                }
+
+                return _ratingRepository;
             }
         }
 

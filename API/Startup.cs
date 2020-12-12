@@ -37,6 +37,7 @@ namespace API
             services.ConfigureUserService();
             services.ConfigureCommentsService();
             services.ConfigureLikeService();
+            services.ConfigureRatingService();
             services.AddSignalR();
             services.ConfigureBasketService();
             services.ConfigureSwagger();

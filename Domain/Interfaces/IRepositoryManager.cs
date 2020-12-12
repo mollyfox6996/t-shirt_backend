@@ -13,6 +13,7 @@ namespace Domain.Interfaces
         IGenderRepository Gender { get; }
         ICommentRepository Comment { get; }
         ILikeRepository Like { get; }
+        IRatingRepository Rating { get; }
         Task SaveAsync();
     }
 }

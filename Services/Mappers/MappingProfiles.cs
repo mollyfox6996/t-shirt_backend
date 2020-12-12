@@ -21,6 +21,7 @@ namespace Services.Mappers
             CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
             CreateMap<Comment, CommentDTO>().ReverseMap();
             CreateMap<Like, LikeDTO>().ReverseMap();
+            CreateMap<Rating, RatingDTO>().ReverseMap();
 
         }
     }

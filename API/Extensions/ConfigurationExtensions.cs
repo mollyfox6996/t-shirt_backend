@@ -30,6 +30,7 @@ namespace API.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services) => services.AddScoped<ILoggerService, LoggerService>();
         public static void ConfigureBasketService(this IServiceCollection services) => services.AddScoped(typeof(IBasketService), typeof(BasketService));
         public static void ConfigureLikeService(this IServiceCollection services) => services.AddScoped(typeof(ILikeService), typeof(LikeService));
+        public static void ConfigureRatingService(this IServiceCollection services) => services.AddScoped(typeof(IRatingService), typeof(RatingService));
         public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
 
