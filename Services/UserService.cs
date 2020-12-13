@@ -74,7 +74,6 @@ namespace Services
                 Email = model.Email,
                 DisplayName = model.DisplayName,
                 UserName = model.Email
-                
             };
 
             var userResult = await _userManager.CreateAsync(user, model.Password);
@@ -84,9 +83,11 @@ namespace Services
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
                 var url = "http://localhost:4200/account/accountConfirm";
-
+                var displayName = user.DisplayName;
                 var callbackUrl = url + "?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
-                await _emailService.SendEmail(user.Email, user.DisplayName, HtmlEncoder.Default.Encode(callbackUrl), "Activation link");
+                var text =  $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email adress {callbackUrl}</p>";
+
+                await _emailService.SendEmail(user.Email, HtmlEncoder.Default.Encode(callbackUrl), "Activation link", text);
 
 
             }
@@ -108,6 +109,13 @@ namespace Services
                     return loginResult;
                 }
             }
+            else
+            {
+                loginResult.Success = false;
+                loginResult.Message = "Account with this email address does not exist";
+
+                return loginResult;
+            }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, true);
 
@@ -121,7 +129,7 @@ namespace Services
             else
             {
                 loginResult.Success = false;
-                loginResult.Message = "Username or password is incorrect.";
+                loginResult.Message = "Password is incorrect.";
             }
 
             return loginResult;

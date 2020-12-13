@@ -17,6 +17,12 @@ namespace Services.Mappers
                 .ForMember(p => p.AuthorName, p => p.MapFrom(s => s.User.DisplayName));
             CreateMap<Category, CategoryDTO>();
             CreateMap<Gender, GenderDTO>();
+            CreateMap<CustomBasket, BasketDTO>().ReverseMap();
+            CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
+            CreateMap<Comment, CommentDTO>().ReverseMap();
+            CreateMap<Like, LikeDTO>().ReverseMap();
+            CreateMap<Rating, RatingDTO>().ReverseMap();
+
         }
     }
 }

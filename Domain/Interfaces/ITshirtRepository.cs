@@ -1,22 +1,17 @@
 ﻿using Domain.Entities;
-using System;
+using Domain.RequestFeatures;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface ITshirtRepository
+    public interface ITShirtRepository
     {
-        Task<IEnumerable<TShirt>> GetTShirtListAsync();
-        Task<TShirt> GetTShirtByIdAsync(int id);
-        Task CreateTShirtAsync(TShirt shirt);
-        Task<IEnumerable<TShirt>> GetTshirtByCurrentUserAsync(string userId);
-        Task<IEnumerable<Category>> GetCategoriesAsync();
-        Task<IEnumerable<Gender>> GetGendersAsync();
-        Task<Gender> GetGenderAsync(string name);
-        Task<Category> GetCategoryAsync(string name);
-        Task<IEnumerable<TShirt>> GetByAuthorAsync(string authorName);
-
+        Task<PagedList<TShirt>> GetTShirtListAsync(TShirtParameters tshirtParameters, bool trackChanges);
+        Task<PagedList<TShirt>> GetTshirtsByUserAsync(string userName, TShirtParameters tshirtParameters, bool trackChanges);
+        Task<TShirt> GetTShirtByIdAsync(int id, bool trackChanges);
+        void CreateTShirt(TShirt shirt);
+        void UpdateTShirt(TShirt shirt);
+        void DeleteTShirt(TShirt shirt);
     }
 }

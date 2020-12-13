@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20201118121439_UpdateColumnType")]
-    partial class UpdateColumnType
+    [DbContext(typeof(RepositoryContext))]
+    [Migration("20201212133048_Rating")]
+    partial class Rating
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,41 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Domain.Entities.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomBasketId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TShirtName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomBasketId");
+
+                    b.ToTable("Items");
+                });
+
             modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -128,6 +163,119 @@ namespace Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ShirtId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShirtId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CustomBasket", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomBaskets");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Gender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Male"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Female"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ShirtId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShirtId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ShirtId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShirtId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("Domain.Entities.TShirt", b =>
                 {
                     b.Property<int>("Id")
@@ -146,6 +294,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -163,6 +314,8 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("UserId");
 
@@ -300,11 +453,59 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Domain.Entities.BasketItem", b =>
+                {
+                    b.HasOne("Domain.Entities.CustomBasket", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CustomBasketId");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Comment", b =>
+                {
+                    b.HasOne("Domain.Entities.TShirt", "Shirt")
+                        .WithMany()
+                        .HasForeignKey("ShirtId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Like", b =>
+                {
+                    b.HasOne("Domain.Entities.TShirt", "Shirt")
+                        .WithMany()
+                        .HasForeignKey("ShirtId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Rating", b =>
+                {
+                    b.HasOne("Domain.Entities.TShirt", "Shirt")
+                        .WithMany()
+                        .HasForeignKey("ShirtId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Domain.Entities.TShirt", b =>
                 {
                     b.HasOne("Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
