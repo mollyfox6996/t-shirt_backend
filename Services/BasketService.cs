@@ -35,9 +35,9 @@ namespace Services
             return basket;
         }
 
-        public async Task DeleteBasketAsync(BasketDTO basket)
+        public async Task DeleteBasketAsync(string id)
         {
-            await _basketRepository.DeleteBasketAsync(basket.Id);
+            await _basketRepository.DeleteBasketAsync(id);
             
         }
     }

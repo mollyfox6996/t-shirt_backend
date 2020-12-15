@@ -8,8 +8,8 @@ namespace Infrastructure.Context
 {
     public class RepositoryContext : IdentityDbContext<AppUser>
     {
-        public DbSet<CustomBasket> CustomBaskets { get; set; }
-        public DbSet<BasketItem> Items { get; set; }
+        //public DbSet<CustomBasket> CustomBaskets { get; set; }
+        //public DbSet<BasketItem> Items { get; set; }
         public DbSet<TShirt> TShirts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gender> Genders { get; set; }
@@ -19,8 +19,8 @@ namespace Infrastructure.Context
         
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
         {
-            //Database.Migrate();
-            Database.EnsureCreated();
+            
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

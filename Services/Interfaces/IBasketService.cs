@@ -10,6 +10,6 @@ namespace Services.Interfaces
     {
         Task<BasketDTO> GetBasketAsync(string id);
         Task<BasketDTO> UpdateBasketAsync(BasketDTO basket);
-        Task DeleteBasketAsync(BasketDTO basket);
+        Task DeleteBasketAsync(string id);
     }
 }

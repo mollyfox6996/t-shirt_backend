@@ -49,10 +49,10 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task DeleteBasketAsync(BasketDTO basket)
+        public async Task DeleteBasketAsync(string id)
         {
-            await _basketService.DeleteBasketAsync(basket);
-            _loggerService.LogInfo($"Basket with id: {basket.Id} has deleted.");
+            await _basketService.DeleteBasketAsync(id);
+            _loggerService.LogInfo($"Basket with id: {id} has deleted.");
 
         }
     }
