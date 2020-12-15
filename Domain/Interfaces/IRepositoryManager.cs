@@ -8,7 +8,6 @@ namespace Domain.Interfaces
     public interface IRepositoryManager
     {
         ITShirtRepository TShirt { get; }
-        IBasketRepository Basket { get; }
         ICategoryRepository Category { get; }
         IGenderRepository Gender { get; }
         ICommentRepository Comment { get; }

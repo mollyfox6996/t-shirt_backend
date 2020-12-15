@@ -8,9 +8,8 @@ namespace Domain.Interfaces
 {
     public interface IBasketRepository
     {
-        Task<CustomBasket> GetBasketAsync(string id, bool trackChanges);
-        CustomBasket CreateBasket(string id);
-        void UpdateBasket(CustomBasket basket);
-        void DeleteBasket(CustomBasket customBasket);
+        Task<CustomBasket> GetBasketAsync(string id);
+        Task<CustomBasket> UpdateBasketAsync(CustomBasket basket);
+        Task<bool> DeleteBasketAsync(string id);
     }
 }

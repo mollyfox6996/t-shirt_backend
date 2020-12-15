@@ -8,8 +8,8 @@ namespace Services.Interfaces
 {
     public interface IBasketService
     {
-        Task<BasketDTO> GetBasketAsync(string id, bool trackChanges);
+        Task<BasketDTO> GetBasketAsync(string id);
         Task<BasketDTO> UpdateBasketAsync(BasketDTO basket);
-        Task DeleteBasketAsync(BasketDTO basket);
+        Task DeleteBasketAsync(string id);
     }
 }

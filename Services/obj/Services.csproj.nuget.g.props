@@ -15,10 +15,4 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
-<<<<<<< HEAD
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">/home/alexander/.nuget/packages/newtonsoft.json/10.0.1</PkgNewtonsoft_Json>
-  </PropertyGroup>
-=======
->>>>>>> c1de156c98ce60f5e2b27dfe9df1861f7610d4ce
 </Project>
