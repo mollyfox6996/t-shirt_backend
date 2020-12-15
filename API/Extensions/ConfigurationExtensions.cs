@@ -13,6 +13,8 @@ using Microsoft.OpenApi.Models;
 using Domain.Interfaces;
 using Infrastructure;
 using Infrastructure.Repository;
+using StackExchange.Redis;
+
 
 namespace API.Extensions
 {
@@ -33,6 +35,14 @@ namespace API.Extensions
         public static void ConfigureRatingService(this IServiceCollection services) => services.AddScoped(typeof(IRatingService), typeof(RatingService));
         public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
+        public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
+        public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration)
+        {
+            services.AddSingleton<IConnectionMultiplexer>(c => 
+            {
+                return ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis"));
+            });
+        }
 
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {

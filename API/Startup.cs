@@ -30,6 +30,8 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();
+            services.ConfigureBasketRepository();
+            services.ConfigureRedis(Configuration);
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();
             services.ConfigureTokenService();

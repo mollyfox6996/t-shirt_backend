@@ -11,7 +11,6 @@ namespace Infrastructure.Repository
     {
         private RepositoryContext _repositoryContext;
         private ITShirtRepository _tshirtRepository;
-        private IBasketRepository _basketRepository;
         private ICategoryRepository _categoryRepository;
         private IGenderRepository _genderRepository;
         private ICommentRepository _commentRepository;
@@ -36,18 +35,6 @@ namespace Infrastructure.Repository
             }
         }
 
-        public IBasketRepository Basket
-        {
-            get
-            {
-                if (_basketRepository is null)
-                {
-                    _basketRepository = new BasketRepository(_repositoryContext);
-                }
-
-                return _basketRepository;
-            }
-        }
 
         public ICategoryRepository Category
         {

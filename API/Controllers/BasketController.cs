@@ -27,7 +27,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBasketAsync(string id)
         {
-            var basket = await _basketService.GetBasketAsync(id, false);
+            var basket = await _basketService.GetBasketAsync(id);
             _loggerService.LogInfo($"Get basket for user with id: {id}");
 
             return Ok(basket);
@@ -49,13 +49,11 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteBasketAsync(string id)
+        public async Task DeleteBasketAsync(BasketDTO basket)
         {
-            var basket = await _basketService.GetBasketAsync(id, false);
             await _basketService.DeleteBasketAsync(basket);
-            _loggerService.LogInfo($"Basket with id: {id} has deleted.");
+            _loggerService.LogInfo($"Basket with id: {basket.Id} has deleted.");
 
-            return NoContent();
         }
     }
 }
