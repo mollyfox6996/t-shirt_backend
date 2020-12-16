@@ -19,8 +19,8 @@ namespace Infrastructure.Context
         
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
         {
-            
-            Database.Migrate();
+            Database.EnsureCreated();
+            //Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -8,6 +8,11 @@ namespace Domain.RequestFeatures
 {
     public class TShirtParameters : RequestParameters
     {
+        public TShirtParameters()
+        {
+            OrderBy = "name";
+        }
+
         public string Category { get; set; }
         public string Gender { get; set; }
     }

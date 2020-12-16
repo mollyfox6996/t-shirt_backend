@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string Description { get; set; }
 
         [Required]
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [Required]
         public string PictureUrl { get; set; }

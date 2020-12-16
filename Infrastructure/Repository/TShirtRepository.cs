@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Infrastructure.Extensions;
 
 namespace Infrastructure.Repository
 {
@@ -22,6 +23,7 @@ namespace Infrastructure.Repository
                 .Include(c => c.Category)
                 .Include(g => g.Gender)
                 .Include(u => u.User)
+                .Sort(tshirtParameters.OrderBy)
                 .ToListAsync(), 
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
