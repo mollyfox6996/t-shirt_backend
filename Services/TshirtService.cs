@@ -76,7 +76,7 @@ namespace Services
                 UserId = user.Id,
                 CategoryId = category.Id,
                 GenderId = gender.Id,
-                CreateDate = DateTime.Now.ToString("d")
+                CreateDate = DateTime.Now
             };
 
             try

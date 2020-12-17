@@ -1,35 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "/home/alexander/tshirt/t-shirt_backend/API/API.csproj": {}
+    "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj": {}
   },
   "projects": {
-    "/home/alexander/tshirt/t-shirt_backend/API/API.csproj": {
+    "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alexander/tshirt/t-shirt_backend/API/API.csproj",
+        "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "/home/alexander/tshirt/t-shirt_backend/API/API.csproj",
-        "packagesPath": "/home/alexander/.nuget/packages/",
-        "outputPath": "/home/alexander/tshirt/t-shirt_backend/API/obj/",
+        "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+        "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/alexander/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj"
+              "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
               },
-              "/home/alexander/tshirt/t-shirt_backend/Services/Services.csproj": {
-                "projectPath": "/home/alexander/tshirt/t-shirt_backend/Services/Services.csproj"
+              "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj": {
+                "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj"
               }
             }
           }
@@ -112,26 +114,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj": {
+    "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj",
+        "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj",
-        "packagesPath": "/home/alexander/.nuget/packages/",
-        "outputPath": "/home/alexander/tshirt/t-shirt_backend/Domain/obj/",
+        "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+        "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/alexander/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -172,33 +176,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj": {
+    "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj",
-        "packagesPath": "/home/alexander/.nuget/packages/",
-        "outputPath": "/home/alexander/tshirt/t-shirt_backend/Infrastructure/obj/",
+        "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+        "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/alexander/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj": {
-                "projectPath": "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj"
+              "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj": {
+                "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj"
               }
             }
           }
@@ -212,6 +218,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AK.System.Linq.Dynamic": {
+              "target": "Package",
+              "version": "[1.1.33, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -233,6 +243,10 @@
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.2.4, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.2.6, )"
             }
           },
           "imports": [
@@ -250,36 +264,38 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/alexander/tshirt/t-shirt_backend/Services/Services.csproj": {
+    "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alexander/tshirt/t-shirt_backend/Services/Services.csproj",
+        "projectUniqueName": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "/home/alexander/tshirt/t-shirt_backend/Services/Services.csproj",
-        "packagesPath": "/home/alexander/.nuget/packages/",
-        "outputPath": "/home/alexander/tshirt/t-shirt_backend/Services/obj/",
+        "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\bfmvs\\.nuget\\packages\\",
+        "outputPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/alexander/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\bfmvs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj": {
-                "projectPath": "/home/alexander/tshirt/t-shirt_backend/Domain/Domain.csproj"
+              "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj": {
+                "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Domain\\Domain.csproj"
               },
-              "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/home/alexander/tshirt/t-shirt_backend/Infrastructure/Infrastructure.csproj"
+              "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "G:\\Programming\\Git\\AISNovasions\\TestProject\\Git\\t-shirt_backend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -337,7 +353,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
