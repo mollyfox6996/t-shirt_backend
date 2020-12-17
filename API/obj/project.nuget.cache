@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kHOEpuJXiM+ev0kQcWkM0L7s9PB5j6c1uogjBf6O8uAC9RcRbsRlvuQLA5XFKE77lW1uY0eFlEc30GP+Q/EBUw==",
+  "dgSpecHash": "cKK9asW7ZKAOJFY15I9GNXCSHPhx76r7Y89lsWPSV1MFzRFK3EnXpO4Mcrvksd5djnFmy/oKpFMXQYCwpgVI8g==",
   "success": true,
   "projectFilePath": "/home/alexander/tshirt/t-shirt_backend/API/API.csproj",
   "expectedPackageFiles": [
+    "/home/alexander/.nuget/packages/ak.system.linq.dynamic/1.1.33/ak.system.linq.dynamic.1.1.33.nupkg.sha512",
     "/home/alexander/.nuget/packages/automapper/10.1.0/automapper.10.1.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.0/automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/mailkit/2.9.0/mailkit.2.9.0.nupkg.sha512",
@@ -118,6 +119,7 @@
     "/home/alexander/.nuget/packages/system.io.filesystem.primitives/4.3.0/system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/system.io.pipelines/5.0.0/system.io.pipelines.5.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/system.linq/4.3.0/system.linq.4.3.0.nupkg.sha512",
+    "/home/alexander/.nuget/packages/system.linq.dynamic.core/1.2.6/system.linq.dynamic.core.1.2.6.nupkg.sha512",
     "/home/alexander/.nuget/packages/system.net.nameresolution/4.3.0/system.net.nameresolution.4.3.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/system.net.primitives/4.3.0/system.net.primitives.4.3.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/system.net.websockets.websocketprotocol/4.5.1/system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",

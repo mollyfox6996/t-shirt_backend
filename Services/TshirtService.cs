@@ -75,8 +75,11 @@ namespace Services
                 Price = model.Price,
                 UserId = user.Id,
                 CategoryId = category.Id,
-                GenderId = gender.Id
-                
+
+
+                GenderId = gender.Id,
+                CreateDate = DateTime.Now
+
             };
 
             try
