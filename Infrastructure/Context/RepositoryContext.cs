@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.OrderAggregate;
 using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,9 @@ namespace Infrastructure.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        
+        public DbSet<OrderItem> OrderItems {get; set;}
+        public DbSet<DeliveryMethod> DeliveryMethods {get; set;}
+        public DbSet<Order> Orders {get; set;}
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
 

@@ -6,10 +6,7 @@ COPY ["Domain/Domain.csproj", "Domain/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 COPY ["Services/Services.csproj", "Services/"]
 COPY *.sln ./
-COPY entrypoint.sh ./
 
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
 RUN dotnet restore 
 
 COPY . ./
