@@ -16,6 +16,8 @@ namespace Infrastructure.Repository
         private ICommentRepository _commentRepository;
         private ILikeRepository _likeRepository;
         private IRatingRepository _ratingRepository;
+        private IOrderRepository _orderRepository;
+        private IDeliveryMethodRepository _deliveryMethodRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -98,6 +100,32 @@ namespace Infrastructure.Repository
                 }
 
                 return _ratingRepository;
+            }
+        }
+
+        public IOrderRepository Order
+        {
+            get
+            {
+                if (_orderRepository is null)
+                {
+                    _orderRepository = new OrderRepository(_repositoryContext);
+                }
+
+                return _orderRepository;
+            }
+        }
+
+        public IDeliveryMethodRepository DeliveryMethod
+        {
+            get
+            {
+                if (_deliveryMethodRepository is null)
+                {
+                    _deliveryMethodRepository = new DeliveryMethodRepository(_repositoryContext);
+                }
+
+                return _deliveryMethodRepository;
             }
         }
 

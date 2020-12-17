@@ -13,6 +13,8 @@ namespace Domain.Interfaces
         ICommentRepository Comment { get; }
         ILikeRepository Like { get; }
         IRatingRepository Rating { get; }
+        IOrderRepository Order { get; }
+        IDeliveryMethodRepository DeliveryMethod { get; } 
         Task SaveAsync();
     }
 }

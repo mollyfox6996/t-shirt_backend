@@ -12,7 +12,7 @@ namespace Infrastructure.Repository
 {
     public class BasketRepository : IBasketRepository
     {
-        private IDatabase _database;
+        private readonly IDatabase _database;
         public BasketRepository(IConnectionMultiplexer database)
         {
             _database = database.GetDatabase();

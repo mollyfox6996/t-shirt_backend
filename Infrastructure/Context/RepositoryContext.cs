@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.OrderAggregate;
 using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,19 +9,20 @@ namespace Infrastructure.Context
 {
     public class RepositoryContext : IdentityDbContext<AppUser>
     {
-        //public DbSet<CustomBasket> CustomBaskets { get; set; }
-        //public DbSet<BasketItem> Items { get; set; }
         public DbSet<TShirt> TShirts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        
-        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
+        public DbSet<OrderItem> OrderItems {get; set;}
+        public DbSet<DeliveryMethod> DeliveryMethods {get; set;}
+        public DbSet<Order> Orders {get; set;}
+        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
-            Database.EnsureCreated();
-            //Database.Migrate();
+
+            //Database.EnsureCreated();
+            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
