@@ -15,10 +15,11 @@ namespace Infrastructure.Context
         public DbSet<Like> Likes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         
-        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) 
+        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
-            
+            Database.EnsureDeleted();    
             Database.EnsureCreated();
+            //Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -71,7 +71,7 @@ namespace API.Controllers
                 //return NotFound();
             }
 
-            _logger.LogInfo($"Recieved a t-shirt with id: {id}.");
+            _logger.LogInfo($"Received a t-shirt with id: {id}.");
 
             return Ok(result);
         }
@@ -93,7 +93,7 @@ namespace API.Controllers
             var tshirtsWithMetadata = await _tshirtService.GetAllByCurrentUserAsync(email, tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
-            _logger.LogInfo($"Recieved a t-shirt for user with email: {email}.");
+            _logger.LogInfo($"Received a t-shirt for user with email: {email}.");
 
             return Ok(tshirts);
         }
@@ -119,7 +119,7 @@ namespace API.Controllers
             var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts =  _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
-            _logger.LogInfo($"T-shirts recieved from the author with the name: {name}.");
+            _logger.LogInfo($"T-shirts received from the author with the name: {name}.");
 
             return Ok(tshirts);
         }

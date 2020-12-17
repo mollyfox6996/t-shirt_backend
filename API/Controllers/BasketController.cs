@@ -43,7 +43,7 @@ namespace API.Controllers
             }
 
             var result = await _basketService.UpdateBasketAsync(basket);
-            _loggerService.LogInfo("Basket has succesfully updated.");
+            _loggerService.LogInfo("Basket has successful updated.");
 
             return Ok(result);
         }
