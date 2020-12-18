@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Services.DTOs
+namespace Services.DTOs.OrderAggregate
 {
     public class OrderToReturnDTO
     {
@@ -12,8 +11,7 @@ namespace Services.DTOs
         public AddressDTO Adress { get; set; }
         public string DeliveryMethod { get; set; }
         public decimal ShippingPrice { get; set; }
-        public IReadOnlyList<OrderItemDTO> OrderItems { get; set; }
-        public decimal Subtotal { get; set; }
+        public IEnumerable<OrderItemDTO> OrderItems { get; set; }
         public decimal Total { get; set; }
         public string Status { get; set; }
     }

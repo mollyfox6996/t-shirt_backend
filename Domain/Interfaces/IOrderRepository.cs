@@ -9,6 +9,9 @@ namespace Domain.Interfaces
         void CreateOrder(Order order);
         Task<IEnumerable<Order>> GetOrdersForUserAsync(string email);
         Task<Order> GetOrderByIdAsync(int id, string email);
+
+        //Task<bool> CheckOrderExist(int)
+        void DeleteOrder(Order order);
        
     }
 }

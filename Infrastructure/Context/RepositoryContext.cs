@@ -4,6 +4,7 @@ using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Reflection;
 
 namespace Infrastructure.Context
 {
@@ -20,16 +21,15 @@ namespace Infrastructure.Context
         public DbSet<Order> Orders {get; set;}
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
-
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
             
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new GenderConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
+            
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             
             foreach(var item in builder.Model.GetEntityTypes())
             {

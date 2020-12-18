@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities.OrderAggregate
 {
@@ -8,15 +9,11 @@ namespace Domain.Entities.OrderAggregate
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
-        public OrderItem(int id, string name, decimal price, int quantity)
-        {
-            Id = id;
-            Name = name;
-            Price = price;
-            Quantity = quantity;
-        }
+        
     }
 }

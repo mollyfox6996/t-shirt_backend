@@ -26,6 +26,10 @@ namespace API
                 {
                     var context = services.GetRequiredService<RepositoryContext>();
                     await context.Database.MigrateAsync();
+                    await ContextSeed.SeedAsync(context, loggerFactory);
+                    
+                    var logger = loggerFactory.CreateLogger<Program>();
+                    logger.LogInformation("Ok"); 
                     
                 }
                 catch(Exception ex)

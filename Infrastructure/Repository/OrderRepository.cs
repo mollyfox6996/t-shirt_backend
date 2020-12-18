@@ -19,5 +19,7 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     
 
     public async Task<IEnumerable<Order>> GetOrdersForUserAsync(string email) => await FindByCondition(i => i.Email == email, true).ToListAsync();
+
+    public void DeleteOrder(Order order) => Delete(order);
     
 }

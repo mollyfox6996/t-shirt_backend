@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Domain.Entities.OrderAggregate;
 using Services.DTOs;
+using Services.DTOs.OrderAggregate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,6 +24,11 @@ namespace Services.Mappers
             CreateMap<Comment, CommentDTO>().ReverseMap();
             CreateMap<Like, LikeDTO>().ReverseMap();
             CreateMap<Rating, RatingDTO>().ReverseMap();
+            CreateMap<Address, AddressDTO>().ReverseMap();
+            CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
+            CreateMap<DeliveryMethod, DeliveryMethodDTO>().ReverseMap();
+
 
         }
     }
