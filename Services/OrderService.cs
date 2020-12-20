@@ -1,9 +1,6 @@
 using AutoMapper;
-using Domain.Entities;
 using Domain.Entities.OrderAggregate;
 using Domain.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using Services.DTOs;
 using Services.DTOs.OrderAggregate;
 using Services.Interfaces;
 using System;
@@ -17,16 +14,12 @@ namespace Services
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly IBasketRepository _basketRepository;
-        private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly ILoggerService _loggerService;
 
-        public OrderService(IRepositoryManager repositoryManager, IBasketRepository basketRepository, UserManager<AppUser> userManager, IMapper mapper, ILoggerService loggerService)
+        public OrderService(IRepositoryManager repositoryManager, IBasketRepository basketRepository, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
-            _userManager = userManager;
             _mapper = mapper;
-            _loggerService = loggerService;
             _basketRepository = basketRepository;
         }
         public async Task<OrderToReturnDTO> CreateOrderAsync(OrderDTO orderDTO, string email)
@@ -66,7 +59,7 @@ namespace Services
             if(existOrder != null)
             {
                 _repositoryManager.Order.DeleteOrder(existOrder);
-                _repositoryManager.Order.CreateOrder(order);
+                
             }
 
             _repositoryManager.Order.CreateOrder(order);

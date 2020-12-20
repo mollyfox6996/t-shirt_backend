@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cKK9asW7ZKAOJFY15I9GNXCSHPhx76r7Y89lsWPSV1MFzRFK3EnXpO4Mcrvksd5djnFmy/oKpFMXQYCwpgVI8g==",
+  "dgSpecHash": "bo96c2dMzPJP8QP9bGjxKBrDTwrhF0PC+m3I3SJ3I3r8oHWN8sDYeZ5L55PFjVcjrgJDGTBx3WbbZArmRGMqGw==",
   "success": true,
   "projectFilePath": "/home/alexander/tshirt/t-shirt_backend/API/API.csproj",
   "expectedPackageFiles": [

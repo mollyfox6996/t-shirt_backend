@@ -15,10 +15,20 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     public void CreateOrder(Order order) => Create(order);
     
 
-    public async Task<Order> GetOrderByIdAsync(int id, string email) => await FindByCondition(i => i.Id == id && i.Email == email).SingleOrDefaultAsync();
+    public async Task<Order> GetOrderByIdAsync(int id, string email) => 
+        await FindByCondition(i => i.Id == id && i.Email == email)
+            .Include(p => p.Address)
+            .Include(p => p.DeliveryMethod)
+            .Include(p => p.OrderItems)
+            .SingleOrDefaultAsync();
     
 
-    public async Task<IEnumerable<Order>> GetOrdersForUserAsync(string email) => await FindByCondition(i => i.Email == email, true).ToListAsync();
+    public async Task<IEnumerable<Order>> GetOrdersForUserAsync(string email) => 
+        await FindByCondition(i => i.Email == email, true)
+            .Include(p => p.Address)
+            .Include(p => p.DeliveryMethod)
+            .Include(p => p.OrderItems)
+            .ToListAsync();
 
     public void DeleteOrder(Order order) => Delete(order);
     
