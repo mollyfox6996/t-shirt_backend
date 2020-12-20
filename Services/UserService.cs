@@ -32,9 +32,9 @@ namespace Services
 
         public async Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code)
         {
-            OperationResultDTO<string> result = new OperationResultDTO<string>();
-            AppUser user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            IdentityOptions options = new IdentityOptions();
+            var result = new OperationResultDTO<string>();
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            var options = new IdentityOptions();
 
             if (userId == null || code == null)
             {
@@ -43,7 +43,7 @@ namespace Services
             }
             var proivder = options.Tokens.EmailConfirmationTokenProvider;
 
-            bool isValid = await _userManager.VerifyUserTokenAsync(user, proivder, "EmailConfirmation", HttpUtility.UrlDecode(code));
+            var isValid = await _userManager.VerifyUserTokenAsync(user, proivder, "EmailConfirmation", HttpUtility.UrlDecode(code));
 
             if (isValid)
             {
@@ -78,18 +78,16 @@ namespace Services
 
             var userResult = await _userManager.CreateAsync(user, model.Password);
 
-            if(userResult.Succeeded)
+            if (userResult.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                var url = "http://localhost:4200/account/accountConfirm";
+                const string url = "http://localhost:4200/account/accountConfirm";
                 var displayName = user.DisplayName;
                 var callbackUrl = url + "?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
                 var text =  $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email adress {callbackUrl}</p>";
 
-                await _emailService.SendEmail(user.Email, HtmlEncoder.Default.Encode(callbackUrl), "Activation link", text);
-
-
+                await _emailService.SendConfirmEmail(user.Email, HtmlEncoder.Default.Encode(callbackUrl), "Activation link", text);
             }
             return userResult;
         }

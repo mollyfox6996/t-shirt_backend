@@ -7,18 +7,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Services.DTOs;
 
 namespace Services
 {
     public class OrderService : IOrderService
     {
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IEmailService _emailService;
         private readonly IBasketRepository _basketRepository;
         private readonly IMapper _mapper;
 
-        public OrderService(IRepositoryManager repositoryManager, IBasketRepository basketRepository, IMapper mapper)
+        public OrderService(IRepositoryManager repositoryManager, IEmailService emailService, IBasketRepository basketRepository, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
+            _emailService = emailService;
             _mapper = mapper;
             _basketRepository = basketRepository;
         }
@@ -51,7 +55,6 @@ namespace Services
                 DeliveryMethod = deliveryMethod,
                 OrderItems = items,
                 Total = total,
-
             };
 
             var existOrder = await _repositoryManager.Order.GetOrderByIdAsync(order.Id, order.Email);
@@ -59,12 +62,12 @@ namespace Services
             if(existOrder != null)
             {
                 _repositoryManager.Order.DeleteOrder(existOrder);
-                
             }
 
             _repositoryManager.Order.CreateOrder(order);
             await _repositoryManager.SaveAsync();
-
+            await _emailService.SendOrderEmail(order);
+            
             return _mapper.Map<OrderToReturnDTO>(order);
         }
 
