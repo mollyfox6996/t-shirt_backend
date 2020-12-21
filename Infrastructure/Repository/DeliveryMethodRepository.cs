@@ -5,7 +5,6 @@ using Domain.Interfaces;
 using Infrastructure.Context;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 public class DeliveryMethodRepository : RepositoryBase<DeliveryMethod>, IDeliveryMethodRepository
 {
@@ -13,6 +12,7 @@ public class DeliveryMethodRepository : RepositoryBase<DeliveryMethod>, IDeliver
     {
 
     }
-    public async Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync() =>  await FindAll(true).ToListAsync();
+    public async Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync(bool trackChanges) =>  await FindAll(trackChanges).ToListAsync();
+    public async Task<DeliveryMethod> GetDeliveryMethodAsync(int id) => await FindByCondition(i => i.Id == id, false).SingleOrDefaultAsync();
     
 }

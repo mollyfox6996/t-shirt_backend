@@ -42,6 +42,7 @@ namespace API
             services.ConfigureRatingService();
             services.AddSignalR();
             services.ConfigureBasketService();
+            services.ConfigureOrderService();
             services.ConfigureSwagger();
             services.ConfigureCors(Configuration);
         }

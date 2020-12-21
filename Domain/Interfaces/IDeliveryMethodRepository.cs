@@ -7,6 +7,7 @@ namespace Domain.Interfaces
     public interface IDeliveryMethodRepository
     {
         
-        Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync();
+        Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync(bool trackChanges);
+        Task<DeliveryMethod> GetDeliveryMethodAsync(int id);
     }
 }

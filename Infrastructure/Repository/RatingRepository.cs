@@ -18,7 +18,7 @@ namespace Infrastructure.Repository
 
         public void AddRating(Rating rating) => Create(rating);
        
-        public async Task<Rating> Find(int shirtId, string userId) => await FindByCondition(i => i.ShirtId == shirtId && i.UserId == userId).FirstOrDefaultAsync();
+        public async Task<Rating> Find(int shirtId, string userId) => await FindByCondition(i => i.ShirtId == shirtId && i.UserId == userId, false).FirstOrDefaultAsync();
 
 
         public async Task<IEnumerable<Rating>> GetRatingByShirtId(int id, bool trackChanges) => await FindByCondition(i => i.ShirtId == id, trackChanges).ToListAsync();

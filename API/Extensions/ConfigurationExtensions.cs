@@ -34,6 +34,7 @@ namespace API.Extensions
         public static void ConfigureLikeService(this IServiceCollection services) => services.AddScoped(typeof(ILikeService), typeof(LikeService));
         public static void ConfigureRatingService(this IServiceCollection services) => services.AddScoped(typeof(IRatingService), typeof(RatingService));
         public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
+        public static void ConfigureOrderService(this IServiceCollection services) => services.AddScoped(typeof(IOrderService), typeof(OrderService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
         public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
         public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration)

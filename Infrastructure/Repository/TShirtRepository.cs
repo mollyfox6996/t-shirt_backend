@@ -24,16 +24,19 @@ namespace Infrastructure.Repository
                 .Include(g => g.Gender)
                 .Include(u => u.User)
                 .Sort(tshirtParameters.OrderBy)
+                .Search(tshirtParameters.SearchTerm)
                 .ToListAsync(), 
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
 
-        public async Task<PagedList<TShirt>> GetTshirtsByUserAsync(string userName, TShirtParameters tshirtParameters, bool trackChanges ) => 
+        public async Task<PagedList<TShirt>> GetTshirtsByUserAsync(TShirtParameters tshirtParameters, string userName, bool trackChanges ) => 
             PagedList<TShirt>
-                .ToPagedList(await FindByCondition(c => c.User.DisplayName == userName, trackChanges)
+                .ToPagedList(await FindByCondition(Filter(tshirtParameters),c => c.User.DisplayName == userName, trackChanges)
                 .Include(c => c.Category)
                 .Include(g => g.Gender)
                 .Include(u => u.User)
+                .Sort(tshirtParameters.OrderBy)
+                .Search(tshirtParameters.SearchTerm)
                 .ToListAsync(), 
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
