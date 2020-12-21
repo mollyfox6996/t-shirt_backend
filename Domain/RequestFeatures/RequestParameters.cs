@@ -24,5 +24,6 @@ namespace Domain.RequestFeatures
         }
 
         public string OrderBy { get; set; }
+        public string SearchTerm { get; set; }
     }
 }

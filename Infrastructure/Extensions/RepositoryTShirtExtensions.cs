@@ -49,5 +49,17 @@ namespace Infrastructure.Extensions
 
             return tshirts.OrderBy(orderQuery);
         }
+
+        public static IQueryable<TShirt> Search(this IQueryable<TShirt> tshirts, string searchTerm)
+        {
+            if(string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return tshirts;
+            }
+
+            var lowerCaseTerm = searchTerm.Trim().ToLower();
+
+            return tshirts.Where(ts => ts.Name.ToLower().Contains(lowerCaseTerm));
+        }
     }
 }

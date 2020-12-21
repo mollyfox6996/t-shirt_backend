@@ -24,6 +24,7 @@ namespace Infrastructure.Repository
                 .Include(g => g.Gender)
                 .Include(u => u.User)
                 .Sort(tshirtParameters.OrderBy)
+                .Search(tshirtParameters.SearchTerm)
                 .ToListAsync(), 
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
@@ -35,6 +36,7 @@ namespace Infrastructure.Repository
                 .Include(g => g.Gender)
                 .Include(u => u.User)
                 .Sort(tshirtParameters.OrderBy)
+                .Search(tshirtParameters.SearchTerm)
                 .ToListAsync(), 
                 tshirtParameters.PageNumber, 
                 tshirtParameters.PageSize);
