@@ -52,7 +52,7 @@ namespace Services
                 Email = email,
                 OrderDate = DateTime.Now,
                 Address = address,
-                DeliveryMethod = deliveryMethod,
+                DeliveryMethodId = deliveryMethod.Id,
                 OrderItems = items,
                 Total = total,
             };
@@ -69,7 +69,7 @@ namespace Services
 
             var text = $"<h1>Dear {order.Address.FirstName} {order.Address.LastName}, your order.</h1>" +
                        $"<p>Delivery address: {order.Address.City}, {order.Address.Street}, {order.Address.ZipCode}</p>" +
-                       $"<p>Delivery method: {order.DeliveryMethod.Name}</p>" +
+                       $"<p>Delivery method: {deliveryMethod.Name}</p>" +
                        $"Total bill: ${order.Total}";
 
             await _emailService.SendOrderEmail(order.Email, "Order", text);

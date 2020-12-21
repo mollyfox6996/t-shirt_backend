@@ -11,6 +11,8 @@ namespace Domain.Entities.OrderAggregate
         public string Email { get; set; }
         public DateTime OrderDate { get; set; }
         public Address Address { get; set; }
+
+        public int DeliveryMethodId {get; set;}
         public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
 

@@ -1,12 +1,10 @@
 [
     {
-        
         "Name": "Courier",
         "DeliveryTime": "2 days",
         "Price": 350
     },
     {
-        
         "Name": "Standart Delivery",
         "DeliveryTime": "7 days",
         "Price": 140
