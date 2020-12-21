@@ -2,6 +2,7 @@
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Threading.Tasks;
+using Domain.Entities.OrderAggregate;
 using Microsoft.Extensions.Configuration;
 
 namespace Services
@@ -15,9 +16,9 @@ namespace Services
             _configuration = configuration;
         }
 
-        public async Task SendEmail(string email, string callbackUrl, string subject, string text)
+        public async Task SendConfirmEmail(string email, string callbackUrl, string subject, string text)
         {
-            MimeMessage emailMessage = new MimeMessage();
+            var emailMessage = new MimeMessage();
 
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.From.Add(new MailboxAddress("Administration", _configuration["EmailServiceSettings:login"]));
@@ -26,14 +27,31 @@ namespace Services
             {
                 Text = text
             };
-            
-            using (SmtpClient client = new SmtpClient())
+
+            await SendEmail(emailMessage);
+        }
+
+        public async Task SendOrderEmail(string email, string subject, string text)
+        {
+            var emailMessage = new MimeMessage();
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.From.Add(new MailboxAddress("Administration", _configuration["EmailServiceSettings:login"]));
+            emailMessage.Subject = subject;
+            emailMessage.Body = new TextPart((MimeKit.Text.TextFormat.Html))
             {
-                await client.ConnectAsync("smtp.gmail.com", 465, true);
-                await client.AuthenticateAsync( _configuration["EmailServiceSettings:login"], _configuration["EmailServiceSettings:password"] );
-                await client.SendAsync(emailMessage);
-                await client.DisconnectAsync(true);
-            }
+                Text = text
+            };
+
+            await SendEmail(emailMessage);
+        }
+
+        private async Task SendEmail(MimeMessage emailMessage)
+        {
+            using var client = new SmtpClient();
+            await client.ConnectAsync("smtp.gmail.com", 465, true);
+            await client.AuthenticateAsync( _configuration["EmailServiceSettings:login"], _configuration["EmailServiceSettings:password"] );
+            await client.SendAsync(emailMessage);
+            await client.DisconnectAsync(true);
         }
     }
 }

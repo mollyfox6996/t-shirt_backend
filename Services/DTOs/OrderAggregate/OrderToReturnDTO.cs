@@ -13,6 +13,5 @@ namespace Services.DTOs.OrderAggregate
         public decimal ShippingPrice { get; set; }
         public IEnumerable<OrderItemDTO> OrderItems { get; set; }
         public decimal Total { get; set; }
-        public string Status { get; set; }
     }
 }

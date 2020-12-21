@@ -16,7 +16,7 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     
 
     public async Task<Order> GetOrderByIdAsync(int id, string email) => 
-        await FindByCondition(i => i.Id == id && i.Email == email)
+        await FindByCondition(i => i.Id == id && i.Email == email ,false)
             .Include(p => p.Address)
             .Include(p => p.DeliveryMethod)
             .Include(p => p.OrderItems)

@@ -18,7 +18,7 @@ namespace Infrastructure.Repository
         public void CreateLike(Like like) => Create(like);
 
         public void DeleteLike(Like like) => Delete(like);
-        public async Task<Like> Find(int shirtId, string userId) => await FindByCondition(i => i.ShirtId == shirtId && i.UserId == userId).FirstOrDefaultAsync();
+        public async Task<Like> Find(int shirtId, string userId) => await FindByCondition(i => i.ShirtId == shirtId && i.UserId == userId, false).FirstOrDefaultAsync();
         public async Task<IEnumerable<Like>> GetLikeByShirtId(int id, bool trackChanges) => await FindByCondition(i => i.ShirtId == id, trackChanges).ToListAsync();
     }
 }

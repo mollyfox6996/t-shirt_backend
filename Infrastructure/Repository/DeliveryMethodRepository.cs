@@ -13,6 +13,6 @@ public class DeliveryMethodRepository : RepositoryBase<DeliveryMethod>, IDeliver
 
     }
     public async Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync(bool trackChanges) =>  await FindAll(trackChanges).ToListAsync();
-    public async Task<DeliveryMethod> GetDeliveryMethodAsync(int id) => await FindByCondition(i => i.Id == id).SingleOrDefaultAsync();
+    public async Task<DeliveryMethod> GetDeliveryMethodAsync(int id) => await FindByCondition(i => i.Id == id, false).SingleOrDefaultAsync();
     
 }

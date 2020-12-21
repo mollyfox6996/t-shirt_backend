@@ -15,11 +15,6 @@ namespace Domain.Entities.OrderAggregate
         public IReadOnlyList<OrderItem> OrderItems { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Total { get; set; }
-        public OrderStatus Status { get; set; } = OrderStatus.Pending;
-
-        
-
-        
+        public decimal Total { get; set; }        
     }
 }

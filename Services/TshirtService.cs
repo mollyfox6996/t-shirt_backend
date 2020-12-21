@@ -32,12 +32,12 @@ namespace Services
         public async Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            return await _repositoryManager.TShirt.GetTshirtsByUserAsync(user.DisplayName, tshirtParameters, false);
+            return await _repositoryManager.TShirt.GetTshirtsByUserAsync(tshirtParameters, user.DisplayName, false);
         }
 
         public async Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters) =>
             await _repositoryManager.TShirt.
-                GetTshirtsByUserAsync(name, tshirtParameters, false);
+                GetTshirtsByUserAsync(tshirtParameters, name, false);
         
 
         public async Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id) 
@@ -93,7 +93,7 @@ namespace Services
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = "Is there something wrong";
+                result.Message = "There is something wrong";
                 result.Data = ex.Message;
                 return result;
             }
