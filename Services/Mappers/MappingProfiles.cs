@@ -3,9 +3,7 @@ using Domain.Entities;
 using Domain.Entities.OrderAggregate;
 using Services.DTOs;
 using Services.DTOs.OrderAggregate;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Services.DTOs.CategoryDTOs;
 
 namespace Services.Mappers
 {
@@ -17,7 +15,8 @@ namespace Services.Mappers
                 .ForMember(p => p.Category, p => p.MapFrom(s => s.Category.Name))
                 .ForMember(p => p.Gender, p => p.MapFrom(s => s.Gender.Name))
                 .ForMember(p => p.AuthorName, p => p.MapFrom(s => s.User.DisplayName));
-            CreateMap<Category, CategoryDTO>();
+            CreateMap<Category, CategoryDTO>().ReverseMap();
+            CreateMap<Category, CategoryForCreateDTO>().ReverseMap();
             CreateMap<Gender, GenderDTO>();
             CreateMap<CustomBasket, BasketDTO>().ReverseMap();
             CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
@@ -32,8 +31,6 @@ namespace Services.Mappers
                 .ReverseMap();
             CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
             CreateMap<DeliveryMethod, DeliveryMethodDTO>().ReverseMap();
-
-
         }
     }
 }

@@ -21,7 +21,7 @@ namespace API
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,6 +31,7 @@ namespace API
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();
             services.ConfigureBasketRepository();
+            services.ConfigureCategoryService();
             services.ConfigureRedis(Configuration);
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();

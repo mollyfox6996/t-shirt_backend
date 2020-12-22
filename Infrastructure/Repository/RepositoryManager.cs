@@ -61,6 +61,6 @@ namespace Infrastructure.Repository
             get { return _deliveryMethodRepository ??= new DeliveryMethodRepository(_repositoryContext); }
         }
 
-        public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
+        public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }
 }

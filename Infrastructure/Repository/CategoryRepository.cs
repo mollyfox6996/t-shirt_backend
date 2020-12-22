@@ -4,7 +4,6 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -20,18 +19,12 @@ namespace Infrastructure.Repository
             await FindAll(trackChanges)
                 .ToListAsync();
        
-        public async Task<Category> GetCategoryAsync(int id, bool trackChanges) =>
-            await FindByCondition(c => c.Id == id, trackChanges)
-                .SingleOrDefaultAsync();
-        
-        public async Task<Category> FindCategoryAsync(Expression<Func<Category, bool>> expression, bool trackChanges) =>
-            await FindByCondition(expression, trackChanges)
+        public async Task<Category> FindCategoryAsync(Expression<Func<Category, bool>> expressions, bool trackChanges) =>
+            await FindByCondition(expressions, trackChanges)
                 .SingleOrDefaultAsync();
 
         public void CreateCategory(Category category) => Create(category);
-
-        public void UpdateCategory(Category category) => Update(category);
-
+        
         public void DeleteCategory(Category category) => Delete(category);
     }
 }
