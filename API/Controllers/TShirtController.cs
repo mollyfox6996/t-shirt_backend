@@ -2,7 +2,6 @@
 using Domain.Entities;
 using Domain.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,14 +16,14 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TShirtController : ControllerBase
+    public class TshirtController : ControllerBase
     {
         private readonly ITshirtService _tshirtService;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public TShirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper, UserManager<AppUser> userManager)
+        public TshirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper, UserManager<AppUser> userManager)
 
         {
             _mapper = mapper;
@@ -41,15 +40,8 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetTShirts([FromQuery] TShirtParameters tshirtParameters)
+        public async Task<IActionResult> GetTShirts([FromQuery] TshirtParameters tshirtParameters)
         {
-            if (tshirtParameters is null)
-            {
-                _logger.LogError("TShirtParameters object send from client is null.");
-                
-                return BadRequest("TShirtParameters object is null.");
-            }
-
             var tshirtsWithMetadata =  await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirtsPage = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
@@ -67,8 +59,7 @@ namespace API.Controllers
             {
                 _logger.LogError($"T-Shirt with id: {id} not found.");
 
-                return Ok(result);
-                //return NotFound();
+                return BadRequest(result);
             }
 
             _logger.LogInfo($"Received a t-shirt with id: {id}.");
@@ -79,18 +70,11 @@ namespace API.Controllers
         [Authorize]
         [HttpGet]
         [Route("getByUser")]
-        public async Task<IActionResult> GetByUserId([FromQuery] TShirtParameters tshirtParameters)
-
+        public async Task<IActionResult> GetByCurrentUser([FromQuery] TshirtParameters tshirtParameters)
         {
-            if (tshirtParameters is null)
-            {
-                _logger.LogError("TShirtParameters object send from client is null.");
-                
-                return BadRequest("TShirtParameters object is null.");
-            }
-
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
-            var tshirtsWithMetadata = await _tshirtService.GetAllByCurrentUserAsync(email, tshirtParameters);
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            tshirtParameters.Author = email;
+            var tshirtsWithMetadata = await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
             _logger.LogInfo($"Received a t-shirt for user with email: {email}.");
@@ -100,7 +84,7 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("getByAuthor/{name}")]
-        public async Task<IActionResult> GetByAuthorName(string name, [FromQuery] TShirtParameters tshirtParameters)
+        public async Task<IActionResult> GetByAuthorName(string name, [FromQuery] TshirtParameters tshirtParameters)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -109,14 +93,17 @@ namespace API.Controllers
                 return BadRequest("User name is null or empty.");
             }
 
-            if (tshirtParameters is null)
+            var author = _userManager.Users.FirstOrDefault(c => c.DisplayName.Equals(name));
+           
+            if (author is null)
             {
-                _logger.LogError("TShirtParameters object send from client is null.");
-
-                return BadRequest("TShirtParameters object is null.");
+                _logger.LogError($"User with name {name} not found.");
+                
+                return BadRequest($"User with name {name} not found.");
             }
-
-            var tshirtsWithMetadata = await _tshirtService.GetByUserAsync(name, tshirtParameters);
+            
+            tshirtParameters.Author = author.Email; 
+            var tshirtsWithMetadata = await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts =  _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
             _logger.LogInfo($"T-shirts received from the author with the name: {name}.");
@@ -132,10 +119,11 @@ namespace API.Controllers
             if (model is null)
             {
                 _logger.LogError("CreateTshirtDTO object send from client is null");
+                
                 return BadRequest("CreateTshirtDTO object is null");
             }
 
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var tshirt = await _tshirtService.CreateAsync(model, email);
 
             return Ok(tshirt);

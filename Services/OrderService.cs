@@ -34,7 +34,7 @@ namespace Services
 
             foreach(var item in basket.Items)
             {
-                var shirtItem = await _repositoryManager.TShirt.GetTShirtByIdAsync(item.Id, true);
+                var shirtItem = await _repositoryManager.Tshirt.GetTShirtByIdAsync(item.Id, true);
                 var orderItem = new OrderItem
                 {
                     Name = shirtItem.Name,

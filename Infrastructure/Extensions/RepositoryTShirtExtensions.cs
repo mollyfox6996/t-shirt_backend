@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
 using System.Text;
+using Domain.RequestFeatures;
 
 
 namespace Infrastructure.Extensions
@@ -40,16 +41,19 @@ namespace Infrastructure.Extensions
                 orderQueryBuilder.Append($"{objectProperty.Name} {direction}, ");
             }
 
-            var orderQuery = orderByQueryString.ToString().TrimEnd(',', ' ');
+            var orderQuery = orderByQueryString.TrimEnd(',', ' ');
             
-            if (string.IsNullOrWhiteSpace(orderQuery))
-            {
-                return tshirts.OrderBy(ts => ts.Name);
-            }
-
-            return tshirts.OrderBy(orderQuery);
+            return string.IsNullOrWhiteSpace(orderQuery) ? tshirts.OrderBy(ts => ts.Name) : tshirts.OrderBy(orderQuery);
         }
 
+        public static IQueryable<TShirt> Filter(this IQueryable<TShirt> tshirts, TshirtParameters tshirtParameters)
+        {
+            return tshirts.Where(c =>
+                (string.IsNullOrWhiteSpace(tshirtParameters.Gender) || c.Gender.Name == tshirtParameters.Gender) &&
+                (string.IsNullOrWhiteSpace(tshirtParameters.Category) || c.Category.Name == tshirtParameters.Category) &&
+                (string.IsNullOrWhiteSpace(tshirtParameters.Author) || c.User.Email == tshirtParameters.Author));
+        }
+        
         public static IQueryable<TShirt> Search(this IQueryable<TShirt> tshirts, string searchTerm)
         {
             if(string.IsNullOrWhiteSpace(searchTerm))

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
     public interface IRepositoryManager
     {
-        ITShirtRepository TShirt { get; }
+        ITshirtRepository Tshirt { get; }
         ICategoryRepository Category { get; }
         IGenderRepository Gender { get; }
         ICommentRepository Comment { get; }

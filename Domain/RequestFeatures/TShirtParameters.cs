@@ -1,19 +1,14 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-
-namespace Domain.RequestFeatures
+﻿namespace Domain.RequestFeatures
 {
-    public class TShirtParameters : RequestParameters
+    public class TshirtParameters : RequestParameters
     {
-        public TShirtParameters()
+        public TshirtParameters()
         {
             OrderBy = "name";
         }
 
         public string Category { get; set; }
         public string Gender { get; set; }
+        public string Author { get; set; }
     }
 }

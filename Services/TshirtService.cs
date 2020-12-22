@@ -15,34 +15,21 @@ namespace Services
         private readonly IRepositoryManager _repositoryManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly ILoggerService _loggerService;
-
-        public TshirtService(IRepositoryManager repositoryManager, UserManager<AppUser> userManager, IMapper mapper, ILoggerService loggerService)
+      
+        public TshirtService(IRepositoryManager repositoryManager, UserManager<AppUser> userManager, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
             _userManager = userManager;
             _mapper = mapper;
-            _loggerService = loggerService;
         }
 
-        public async Task<PagedList<TShirt>> GetTShirtsAsync(TShirtParameters tshirtParameters) =>
-            await _repositoryManager.TShirt
+        public async Task<PagedList<TShirt>> GetTShirtsAsync(TshirtParameters tshirtParameters) =>
+            await _repositoryManager.Tshirt
                 .GetTShirtListAsync(tshirtParameters, false);
-      
-        public async Task<PagedList<TShirt>> GetAllByCurrentUserAsync(string email, TShirtParameters tshirtParameters)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            return await _repositoryManager.TShirt.GetTshirtsByUserAsync(tshirtParameters, user.DisplayName, false);
-        }
-
-        public async Task<PagedList<TShirt>> GetByUserAsync(string name, TShirtParameters tshirtParameters) =>
-            await _repositoryManager.TShirt.
-                GetTshirtsByUserAsync(tshirtParameters, name, false);
         
-
         public async Task<OperationResultDTO<TShirtToReturnDTO>> GetByIdAsync(int id) 
         {
-            var result = await _repositoryManager.TShirt.GetTShirtByIdAsync(id, false);
+            var result = await _repositoryManager.Tshirt.GetTShirtByIdAsync(id, false);
             
             if (result == null)
             {
@@ -53,6 +40,7 @@ namespace Services
                     Data = null
                 };
             }
+            
             return new OperationResultDTO<TShirtToReturnDTO>
             {
                 Success = true,
@@ -63,31 +51,30 @@ namespace Services
 
         public async Task<OperationResultDTO<string>> CreateAsync(CreateTshirtDTO model, string email)
         {
-            OperationResultDTO<string> result = new OperationResultDTO<string>();
-            AppUser user = await _userManager.FindByEmailAsync(email);
-            Category category = await _repositoryManager.Category.FindCategoryAsync(c => c.Name == model.Category, false);
-            Gender gender = await _repositoryManager.Gender.FindGenderAsync(c => c.Name == model.Gender, false);
-            TShirt shirt = new TShirt
-            {
-                Name = model.Name,
-                Description = model.Description,
-                PictureUrl = model.PictureUrl,
-                Price = model.Price,
-                UserId = user.Id,
-                CategoryId = category.Id,
-
-
-                GenderId = gender.Id,
-                CreateDate = DateTime.Now
-
-            };
-
+            var result = new OperationResultDTO<string>();
+            var user = await _userManager.FindByEmailAsync(email);
+            var category = await _repositoryManager.Category.FindCategoryAsync(c => c.Name == model.Category, false);
+            var gender = await _repositoryManager.Gender.FindGenderAsync(c => c.Name == model.Gender, false);
+            
             try
             {
-                _repositoryManager.TShirt.CreateTShirt(shirt);
+                var shirt = new TShirt
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    PictureUrl = model.PictureUrl,
+                    Price = model.Price,
+                    UserId = user.Id,
+                    CategoryId = category.Id,
+                    GenderId = gender.Id,
+                    CreateDate = DateTime.Now
+                };
+           
+                _repositoryManager.Tshirt.CreateTShirt(shirt);
                 await _repositoryManager.SaveAsync();
                 result.Success = true;
-                result.Message = "New tshirt has been created";
+                result.Message = "New t-shirt has been created";
+                
                 return result;
             }
             catch (Exception ex)
