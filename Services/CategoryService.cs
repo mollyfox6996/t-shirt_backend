@@ -23,7 +23,7 @@ namespace Services
             await _repositoryManager.SaveAsync();
         }
 
-        public async Task Delete(Category category)
+        public async Task DeleteAsync(Category category)
         {
             _repositoryManager.Category.DeleteCategory(category);
             await _repositoryManager.SaveAsync();
@@ -35,7 +35,7 @@ namespace Services
         public async Task<Category> GetByIdAsync(int id, bool trackChanges) => 
             await _repositoryManager.Category.FindCategoryAsync(c => c.Id == id, false);
 
-        public async Task<Category> GetCategory(Expression<Func<Category, bool>> expression, bool trackChanges) =>
+        public async Task<Category> FindCategoryAsync(Expression<Func<Category, bool>> expression, bool trackChanges) =>
             await _repositoryManager.Category.FindCategoryAsync(expression, trackChanges);
     }
 }

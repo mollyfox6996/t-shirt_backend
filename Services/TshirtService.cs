@@ -13,12 +13,16 @@ namespace Services
     public class TshirtService : ITshirtService
     {
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IGenderService _genderService;
+        private readonly ICategoryService _categoryService;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
       
-        public TshirtService(IRepositoryManager repositoryManager, UserManager<AppUser> userManager, IMapper mapper)
+        public TshirtService(IRepositoryManager repositoryManager, IGenderService genderService, ICategoryService categoryService, UserManager<AppUser> userManager, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
+            _genderService = genderService;
+            _categoryService = categoryService;
             _userManager = userManager;
             _mapper = mapper;
         }
@@ -53,8 +57,8 @@ namespace Services
         {
             var result = new OperationResultDTO<string>();
             var user = await _userManager.FindByEmailAsync(email);
-            var category = await _repositoryManager.Category.FindCategoryAsync(c => c.Name == model.Category, false);
-            var gender = await _repositoryManager.Gender.FindGenderAsync(c => c.Name == model.Gender, false);
+            var category = await _categoryService.FindCategoryAsync(c => c.Name == model.Category, false);
+            var gender = await _genderService.FindGenderAsync(c => c.Name == model.Gender, false);
             
             try
             {

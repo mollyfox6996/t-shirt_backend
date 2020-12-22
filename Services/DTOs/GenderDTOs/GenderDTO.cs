@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Services.DTOs
+﻿namespace Services.DTOs.GenderDTOs
 {
     public class GenderDTO
     {

@@ -71,7 +71,7 @@ namespace API.Controllers
                 return BadRequest($"Category with id {category.Id} not found.");
             }
             
-            await _service.Delete(categoryForDelete);
+            await _service.DeleteAsync(categoryForDelete);
             _logger.LogInfo($"Category {category.Name} has deleted.");
 
             return Ok();

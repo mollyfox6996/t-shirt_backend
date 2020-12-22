@@ -1,14 +1,14 @@
-﻿using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Domain.Entities;
 
-namespace Domain.Interfaces
+namespace Services.Interfaces
 {
-    public interface IGenderRepository
+    public interface IGenderService
     {
-        Task<IEnumerable<Gender>> GelAllGendersAsync();
+        Task<IEnumerable<Gender>> GetAllGendersAsync();
         Task<Gender> FindGenderAsync(Expression<Func<Gender, bool>> expression, bool trackChanges);
     }
 }

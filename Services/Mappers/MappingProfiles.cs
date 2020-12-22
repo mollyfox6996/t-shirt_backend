@@ -4,6 +4,7 @@ using Domain.Entities.OrderAggregate;
 using Services.DTOs;
 using Services.DTOs.OrderAggregate;
 using Services.DTOs.CategoryDTOs;
+using Services.DTOs.GenderDTOs;
 
 namespace Services.Mappers
 {

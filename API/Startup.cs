@@ -32,6 +32,7 @@ namespace API
             services.ConfigureRepositoryService();
             services.ConfigureBasketRepository();
             services.ConfigureCategoryService();
+            services.ConfigureGenderService();
             services.ConfigureRedis(Configuration);
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();

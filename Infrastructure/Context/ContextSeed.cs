@@ -18,12 +18,12 @@ namespace Infrastructure.Context
             {
                 if(!context.DeliveryMethods.Any())
                 {
-                    var data = File.ReadAllText("../Infrastructure/SeedData/delivery.json");
+                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/delivery.json");
                     var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(data);
 
                     foreach (var item in methods)
                     {
-                        context.DeliveryMethods.Add(item);
+                        await context.DeliveryMethods.AddAsync(item);
                     }
 
                     await context.SaveChangesAsync();
@@ -31,12 +31,12 @@ namespace Infrastructure.Context
 
                 if(!context.Genders.Any())
                 {
-                    var data = File.ReadAllText("../Infrastructure/SeedData/gender.json");
+                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/gender.json");
                     var genders = JsonSerializer.Deserialize<List<Gender>>(data);
 
                     foreach (var item in genders)
                     {
-                        context.Genders.Add(item);
+                        await context.Genders.AddAsync(item);
                     }
 
                     await context.SaveChangesAsync();
@@ -44,12 +44,12 @@ namespace Infrastructure.Context
 
                 if(!context.Categories.Any())
                 {
-                    var data = File.ReadAllText("../Infrastructure/SeedData/category.json");
+                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/category.json");
                     var categories = JsonSerializer.Deserialize<List<Category>>(data);
 
                     foreach (var item in categories)
                     {
-                        context.Categories.Add(item);
+                        await context.Categories.AddAsync(item);
                     }
 
                     await context.SaveChangesAsync();

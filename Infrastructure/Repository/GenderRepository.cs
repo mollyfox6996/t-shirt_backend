@@ -15,15 +15,12 @@ namespace Infrastructure.Repository
         {
         }
 
-        public async Task<IEnumerable<Gender>> GelAllGendersAsync(bool trackChanges) => 
-            await FindAll(trackChanges)
+        public async Task<IEnumerable<Gender>> GelAllGendersAsync() => 
+            await FindAll(false)
                 .ToListAsync();
 
-        public async Task<Gender> GetGenderByIdAsync(int id, bool trackChanges) => 
-            await FindByCondition(c => c.Id.Equals(id), trackChanges)
-                .SingleOrDefaultAsync();
-
         public async Task<Gender> FindGenderAsync(Expression<Func<Gender, bool>> expression, bool trackChanges) =>
-            await FindByCondition(expression, trackChanges).SingleOrDefaultAsync();
+            await FindByCondition(expression, trackChanges)
+                .SingleOrDefaultAsync();
     }
 }

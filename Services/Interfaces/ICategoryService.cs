@@ -9,9 +9,9 @@ namespace Services.Interfaces
     public interface ICategoryService
     {
         Task CreateAsync(Category category);
-        Task Delete(Category category);
+        Task DeleteAsync(Category category);
         Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges);
         Task<Category> GetByIdAsync(int id, bool trackChanges);
-        Task<Category> GetCategory(Expression<Func<Category, bool>> expression, bool trackChanges);
+        Task<Category> FindCategoryAsync(Expression<Func<Category, bool>> expression, bool trackChanges);
     }
 }

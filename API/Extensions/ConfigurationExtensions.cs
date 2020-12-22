@@ -35,6 +35,7 @@ namespace API.Extensions
         public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
         public static void ConfigureOrderService(this IServiceCollection services) => services.AddScoped(typeof(IOrderService), typeof(OrderService));
         public static void ConfigureCategoryService(this IServiceCollection services) => services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
+        public static void ConfigureGenderService(this IServiceCollection services) => services.AddScoped(typeof(IGenderService), typeof(GenderService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
         public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
         public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration) => services.AddSingleton<IConnectionMultiplexer>(c => ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));

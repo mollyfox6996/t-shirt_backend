@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Services.DTOs.GenderDTOs;
 
 namespace API.Controllers
 {
@@ -19,16 +20,17 @@ namespace API.Controllers
     public class TshirtController : ControllerBase
     {
         private readonly ITshirtService _tshirtService;
+        private readonly IGenderService _genderService;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public TshirtController(ITshirtService tshirtService, ILoggerService logger, IMapper mapper, UserManager<AppUser> userManager)
-
+        public TshirtController(ITshirtService tshirtService, IGenderService genderService, ILoggerService logger, IMapper mapper, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _logger = logger;
             _tshirtService = tshirtService;
+            _genderService = genderService;
             _userManager = userManager;
         }
 
@@ -125,8 +127,19 @@ namespace API.Controllers
 
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var tshirt = await _tshirtService.CreateAsync(model, email);
+            _logger.LogInfo("Create a new t-shirt.");
 
             return Ok(tshirt);
+        }
+
+        [HttpGet]
+        [Route("gender")]
+        public async Task<IActionResult> GetListOfGenders()
+        {
+            var result = _mapper.Map<IEnumerable<GenderDTO>>(await _genderService.GetAllGendersAsync());
+            _logger.LogInfo("Get list of genders");
+            
+            return Ok(result);
         }
     }
 }
