@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Domain.Entities.OrderAggregate;
-using Services.DTOs;
+using Services.DTOs.BasketDTOs;
 using Services.DTOs.OrderAggregate;
 using Services.DTOs.CategoryDTOs;
+using Services.DTOs.CommentDTOs;
 using Services.DTOs.GenderDTOs;
+using Services.DTOs.LikeDTOs;
+using Services.DTOs.RatingDTOs;
+using Services.DTOs.TshirtDTOs;
 
 namespace Services.Mappers
 {

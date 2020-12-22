@@ -6,10 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
-using Services;
 using Services.Interfaces;
 using Services.Mappers;
 using System.IO;
+using Services.Services;
 
 namespace API
 {

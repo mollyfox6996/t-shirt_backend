@@ -1,14 +1,7 @@
-using AutoMapper;
-using Domain.Entities.OrderAggregate;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Services.DTOs.OrderAggregate;
 using Services.Interfaces;
-using System.Collections.Generic;
-using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -32,16 +25,19 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder(OrderDTO order)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.CreateOrderAsync(order, email);
+            _logger.LogInfo($"Create order for user with email: {email}.");
+            
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetOrdersForUser()
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.GetOrdersForUserAsync(email);
+            _logger.LogInfo($"Get order for user with email: {email}.");
             return Ok(result);
         }
 
@@ -49,8 +45,9 @@ namespace API.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetOrderForUserById(int id)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.GetOrderAsync(id, email);
+            _logger.LogInfo($"Get order for user with email: {email}, by id: {id}.");
             return Ok(result);
         }
 
@@ -59,10 +56,16 @@ namespace API.Controllers
         public async Task<IActionResult> GetDeliveryMethods()
         {
             var result = await _orderService.GetDeliveryMethods();
+            
             if(result is null)
             {
+                _logger.LogError("Error! Delivery methods not found.");
+                
                 return NoContent();
             }
+            
+            _logger.LogInfo("Get delivery methods.");
+            
             return Ok(result);
         }
     }

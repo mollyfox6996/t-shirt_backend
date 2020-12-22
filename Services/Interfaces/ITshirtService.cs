@@ -1,7 +1,8 @@
 ﻿using Domain.Entities;
 using Domain.RequestFeatures;
-using Services.DTOs;
 using System.Threading.Tasks;
+using Services.DTOs.OperationResultDTOs;
+using Services.DTOs.TshirtDTOs;
 
 namespace Services.Interfaces
 {

@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services.DTOs;
 using Services.Interfaces;
-
 using System.Threading.Tasks;
+using Services.DTOs.BasketDTOs;
 
 namespace API.Controllers
 {
@@ -15,13 +13,11 @@ namespace API.Controllers
     {
         private readonly IBasketService _basketService;
         private readonly ILoggerService _loggerService;
-        private readonly IMapper _mapper;
 
-        public BasketController(IBasketService basketService, ILoggerService loggerService, IMapper mapper)
+        public BasketController(IBasketService basketService, ILoggerService loggerService)
         {
             _basketService = basketService;
             _loggerService = loggerService;
-            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -53,7 +49,6 @@ namespace API.Controllers
         {
             await _basketService.DeleteBasketAsync(id);
             _loggerService.LogInfo($"Basket with id: {id} has deleted.");
-
         }
     }
 }

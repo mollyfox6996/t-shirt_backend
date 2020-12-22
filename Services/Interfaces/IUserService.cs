@@ -1,6 +1,8 @@
-﻿using Services.DTOs;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Services.DTOs.LoginDTOs;
+using Services.DTOs.OperationResultDTOs;
+using Services.DTOs.UserDTOs;
 
 namespace Services.Interfaces
 {
@@ -11,6 +13,5 @@ namespace Services.Interfaces
         Task<UserForReturnDTO> GetUser(string email);
         Task SignOut();
         Task<OperationResultDTO<string>> ConfirmEmail(string userId, string code);
-        
     }
 }

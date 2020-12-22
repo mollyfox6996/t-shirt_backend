@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
-using Domain.Entities.OrderAggregate;
-
+﻿using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {

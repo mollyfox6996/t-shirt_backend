@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Services.DTOs;
 using Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Services.DTOs.GenderDTOs;
+using Services.DTOs.TshirtDTOs;
 
 namespace API.Controllers
 {
@@ -39,8 +39,7 @@ namespace API.Controllers
             Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
         }
-
-
+        
         [HttpGet]
         public async Task<IActionResult> GetTShirts([FromQuery] TshirtParameters tshirtParameters)
         {

@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Context;
 using Services.Interfaces;
-using Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +11,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Domain.Interfaces;
 using Infrastructure.Repository;
+using Services.Services;
 using StackExchange.Redis;
 
 

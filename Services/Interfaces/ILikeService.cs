@@ -1,8 +1,6 @@
-﻿using Services.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Services.DTOs.LikeDTOs;
 
 namespace Services.Interfaces
 {
