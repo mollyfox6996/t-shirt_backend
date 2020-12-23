@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Context
 {
-    public class ContextSeed
+    public class ContextSeeder
     {
         public static async Task SeedAsync(RepositoryContext context, ILoggerFactory loggerFactory)
         {
@@ -57,7 +57,7 @@ namespace Infrastructure.Context
             }
             catch(Exception ex)
             {
-                var logger = loggerFactory.CreateLogger<ContextSeed>();
+                var logger = loggerFactory.CreateLogger<ContextSeeder>();
                 logger.LogError(ex.Message);
             }
         }
