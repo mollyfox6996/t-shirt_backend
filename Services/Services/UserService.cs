@@ -115,7 +115,7 @@ namespace Services.Services
 
             if (result.Succeeded)
             {
-                var token = _tokenService.CreateToken(user);
+                var token = await  _tokenService.CreateToken(user, _userManager);
 
                 loginResult.Success = true;
                 loginResult.Token = token;
