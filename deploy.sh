@@ -1,8 +1,8 @@
 #!/bin/sh
-set -e
+
 
 IMAGE="alexgrebennikov/t-shirt_backend"
-docker build -t "${IMAGE}":latest
+docker build -t alexgrebennikov/t-shirt_backend .
 
 echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-docker push "${IMAGE}":latest
+docker push alexgrebennikov/t-shirt_backend:latest
