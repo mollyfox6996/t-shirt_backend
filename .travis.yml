@@ -1,7 +1,6 @@
 language: csharp
 dotnet: 3.1.10
-sudo: required
-mono: none
+
 
 services:
   - docker
