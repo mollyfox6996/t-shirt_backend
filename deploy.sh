@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+
 
 IMAGE="alexgrebennikov/t-shirt_backend"
 docker build -t "${IMAGE}":latest
