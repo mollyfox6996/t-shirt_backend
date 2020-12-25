@@ -1,16 +1,13 @@
 ﻿using Domain.Interfaces;
 using Infrastructure.Context;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
     public class RepositoryManager : IRepositoryManager
     {
-        private RepositoryContext _repositoryContext;
-        private ITShirtRepository _tshirtRepository;
+        private readonly RepositoryContext _repositoryContext;
+        private ITshirtRepository _tshirtRepository;
         private ICategoryRepository _categoryRepository;
         private IGenderRepository _genderRepository;
         private ICommentRepository _commentRepository;
@@ -24,111 +21,46 @@ namespace Infrastructure.Repository
             _repositoryContext = repositoryContext;
         }
 
-        public ITShirtRepository TShirt
+        public ITshirtRepository Tshirt
         {
-            get
-            {
-                if (_tshirtRepository is null)
-                {
-                    _tshirtRepository = new TShirtRepository(_repositoryContext);
-                }
-
-                return _tshirtRepository;
-            }
+            get { return _tshirtRepository ??= new TshirtRepository(_repositoryContext); }
         }
-
 
         public ICategoryRepository Category
         {
-            get
-            {
-                if (_categoryRepository is null)
-                {
-                    _categoryRepository = new CategoryRepository(_repositoryContext);
-                }
-
-                return _categoryRepository;
-            }
+            get { return _categoryRepository ??= new CategoryRepository(_repositoryContext); }
         }
 
         public IGenderRepository Gender
         {
-            get
-            {
-                if (_genderRepository is null)
-                {
-                    _genderRepository = new GenderRepository(_repositoryContext);
-                }
-
-                return _genderRepository;
-            }
+            get { return _genderRepository ??= new GenderRepository(_repositoryContext); }
         }
 
         public ICommentRepository Comment
         {
-            get
-            {
-                if(_commentRepository is null)
-                {
-                    _commentRepository = new CommentRepository(_repositoryContext);
-                }
-
-                return _commentRepository;
-            }
+            get { return _commentRepository ??= new CommentRepository(_repositoryContext); }
         }
 
         public ILikeRepository Like
         {
-            get
-            {
-                if (_likeRepository is null)
-                {
-                    _likeRepository = new LikeRepository(_repositoryContext);
-                }
-
-                return _likeRepository;
-            }
+            get { return _likeRepository ??= new LikeRepository(_repositoryContext); }
         }
 
         public IRatingRepository Rating
         {
-            get
-            {
-                if (_ratingRepository is null)
-                {
-                    _ratingRepository = new RatingRepository(_repositoryContext);
-                }
-
-                return _ratingRepository;
-            }
+            get { return _ratingRepository ??= new RatingRepository(_repositoryContext); }
         }
 
         public IOrderRepository Order
         {
-            get
-            {
-                if (_orderRepository is null)
-                {
-                    _orderRepository = new OrderRepository(_repositoryContext);
-                }
-
-                return _orderRepository;
-            }
+            get { return _orderRepository ??= new OrderRepository(_repositoryContext); }
         }
 
         public IDeliveryMethodRepository DeliveryMethod
         {
-            get
-            {
-                if (_deliveryMethodRepository is null)
-                {
-                    _deliveryMethodRepository = new DeliveryMethodRepository(_repositoryContext);
-                }
-
-                return _deliveryMethodRepository;
-            }
+            get { return _deliveryMethodRepository ??= new DeliveryMethodRepository(_repositoryContext); }
         }
 
-        public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
+        public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }
 }

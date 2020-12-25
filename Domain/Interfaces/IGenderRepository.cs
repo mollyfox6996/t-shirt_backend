@@ -8,8 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IGenderRepository
     {
-        Task<IEnumerable<Gender>> GelAllGendersAsync(bool trackChanges);
-        Task<Gender> GetGenderByIdAsync(int id, bool trackChanges);
+        Task<IEnumerable<Gender>> GelAllGendersAsync();
         Task<Gender> FindGenderAsync(Expression<Func<Gender, bool>> expression, bool trackChanges);
     }
 }

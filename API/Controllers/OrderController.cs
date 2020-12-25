@@ -1,14 +1,9 @@
 using AutoMapper;
 using Domain.Entities.OrderAggregate;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Services.DTOs.OrderAggregate;
 using Services.Interfaces;
-using System.Collections.Generic;
-using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,26 +17,50 @@ namespace API.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly ILoggerService _logger;
+        private readonly IMapper _mapper;
 
-        public OrderController(IOrderService orderService, ILoggerService logger)
+        public OrderController(IOrderService orderService, ILoggerService logger, IMapper mapper)
         {
             _orderService = orderService;
             _logger = logger;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        [Route("all")]
+        [Authorize(Roles="admin")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var result = await _orderService.GetAllOrdersAsync();
+            if(result is null)
+            {
+                _logger.LogError("Error! Orders not found.");
+                
+                return NoContent();
+            }
+            
+            _logger.LogInfo("Get all orders.");
+            
+            return Ok(result);
+
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateOrder(OrderDTO order)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.CreateOrderAsync(order, email);
+            _logger.LogInfo($"Create order for user with email: {email}.");
+            
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetOrdersForUser()
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.GetOrdersForUserAsync(email);
+            _logger.LogInfo($"Get order for user with email: {email}.");
             return Ok(result);
         }
 
@@ -49,8 +68,9 @@ namespace API.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetOrderForUserById(int id)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var result = await _orderService.GetOrderAsync(id, email);
+            _logger.LogInfo($"Get order for user with email: {email}, by id: {id}.");
             return Ok(result);
         }
 
@@ -59,11 +79,45 @@ namespace API.Controllers
         public async Task<IActionResult> GetDeliveryMethods()
         {
             var result = await _orderService.GetDeliveryMethods();
+            
             if(result is null)
             {
+                _logger.LogError("Error! Delivery methods not found.");
+                
                 return NoContent();
             }
+            
+            _logger.LogInfo("Get delivery methods.");
+            
             return Ok(result);
+        }
+
+        [HttpDelete]
+        [Authorize(Roles="admin")]
+        [Route("deliveryMethods")]
+        public async Task<IActionResult> DeleteDeliveryMethodAsync(int id)
+        {
+            await _orderService.DeleteDeliveryMethodAsync(id);
+            _logger.LogInfo("Delivery method was deleted");
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize(Roles="admin")]
+        [Route("deliveryMethods")]
+        public async Task<IActionResult> CreateDeliveryMethodAsync(DeliveryMethodDTO method)
+        {
+            if (method is null)
+            {
+                _logger.LogError($"{nameof(method)} is null.");
+
+                return BadRequest($"{nameof(method)} is null.");
+            }
+
+            await _orderService.CreateDeliveryMethodAsync(_mapper.Map<DeliveryMethod>(method));
+            _logger.LogInfo($"Delivery method {method.Name} has created.");
+            
+            return Ok();
         }
     }
 }

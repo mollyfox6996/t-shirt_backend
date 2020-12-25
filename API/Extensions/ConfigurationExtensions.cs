@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Context;
 using Services.Interfaces;
-using Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +10,8 @@ using Domain.Entities;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Domain.Interfaces;
-using Infrastructure;
 using Infrastructure.Repository;
+using Services.Services;
 using StackExchange.Redis;
 
 
@@ -35,21 +34,18 @@ namespace API.Extensions
         public static void ConfigureRatingService(this IServiceCollection services) => services.AddScoped(typeof(IRatingService), typeof(RatingService));
         public static void ConfigureCommentsService(this IServiceCollection services) => services.AddScoped(typeof(ICommentService), typeof(CommentService));
         public static void ConfigureOrderService(this IServiceCollection services) => services.AddScoped(typeof(IOrderService), typeof(OrderService));
+        public static void ConfigureCategoryService(this IServiceCollection services) => services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
+        public static void ConfigureGenderService(this IServiceCollection services) => services.AddScoped(typeof(IGenderService), typeof(GenderService));
         public static void ConfigureRepositoryService(this IServiceCollection services) => services.AddScoped(typeof(IRepositoryManager), typeof(RepositoryManager));
         public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
-        public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration)
-        {
-            services.AddSingleton<IConnectionMultiplexer>(c => 
-            {
-                return ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis"));
-            });
-        }
-
+        public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration) => services.AddSingleton<IConnectionMultiplexer>(c => ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
+        
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             var builder = services.AddIdentityCore<AppUser>();
 
             builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddRoles<IdentityRole>();
             builder.AddEntityFrameworkStores<RepositoryContext>();
             builder.AddSignInManager<SignInManager<AppUser>>();
             builder.AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
@@ -74,7 +70,6 @@ namespace API.Extensions
                         ValidIssuer = configuration["Token:Issuer"],
                         ValidateIssuer = true,
                         ValidateAudience = false
-
                     };
                 });
         }
@@ -89,7 +84,6 @@ namespace API.Extensions
                     .AllowAnyMethod()
                     .WithOrigins(configuration["AngularUrl"])
                     .AllowCredentials();
-                    ;
                 });
             });
         }
@@ -117,7 +111,6 @@ namespace API.Extensions
                     {securitySchema, new[] { "Bearer"}}};
                 c.AddSecurityRequirement(securityRequirement);
             });
-
         }
     }
 }

@@ -3,8 +3,10 @@ dotnet: 3.1.401
 sudo: required
 mono: none
 
-script:
-  - dotnet restore
-
-  - dotnet build TshirtBackend.sln
-  
+services:
+  - docker
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    branch: master  

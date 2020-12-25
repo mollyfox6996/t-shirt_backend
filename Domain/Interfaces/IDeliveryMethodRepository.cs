@@ -9,5 +9,7 @@ namespace Domain.Interfaces
         
         Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync(bool trackChanges);
         Task<DeliveryMethod> GetDeliveryMethodAsync(int id);
+        void CreateMethod(DeliveryMethod method);
+        void DeleteMethod(DeliveryMethod method);
     }
 }

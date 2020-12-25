@@ -6,10 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
-using Services;
 using Services.Interfaces;
 using Services.Mappers;
 using System.IO;
+using Services.Services;
 
 namespace API
 {
@@ -21,7 +21,7 @@ namespace API
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,6 +31,8 @@ namespace API
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();
             services.ConfigureBasketRepository();
+            services.ConfigureCategoryService();
+            services.ConfigureGenderService();
             services.ConfigureRedis(Configuration);
             services.ConfigureIdentity(Configuration);
             services.ConfigureTshirtService();

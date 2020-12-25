@@ -6,21 +6,15 @@ namespace Domain.RequestFeatures
 {
     public class RequestParameters
     {
-        const int maxPageSize = 48;
+        private const int MaxPageSize = 48;
         public int PageNumber { get; set; } = 1;
         private int _pageSize = 12;
 
         public int PageSize
         {
-            get
-            {
-                return _pageSize;
-            }
+            get => _pageSize;
 
-            set
-            {
-                _pageSize = (value > maxPageSize) ? maxPageSize : value;
-            }
+            set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
 
         public string OrderBy { get; set; }

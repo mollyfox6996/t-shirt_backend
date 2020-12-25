@@ -10,5 +10,7 @@ namespace Domain.Entities
     {
         [Required]
         public string DisplayName { get; set; }
+
+        public IdentityRole Role {get; set;}
     }
 }
