@@ -1,12 +1,16 @@
 language: csharp
-dotnet: 3.1.10
+dotnet: 3.1.401
 sudo: required
 mono: none
 
-services:
-  - docker
+script:
+  - dotnet restore
+
+  - dotnet build TshirtBackend.sln
+services: docker
 deploy:
   provider: script
-  script: deploy.sh
+  script: chmod +x deploy.sh
   on:
-    branch: master  
+    branch: master
+  
