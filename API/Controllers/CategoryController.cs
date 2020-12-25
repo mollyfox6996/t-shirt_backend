@@ -53,26 +53,21 @@ namespace API.Controllers
 
         [Authorize]
         [HttpDelete]
-        public async Task<IActionResult> DeleteCategoryAsync(Category category)
+        public async Task<IActionResult> DeleteCategoryAsync(int id)
         {
-            if (category is null)
-            {
-                _logger.LogError($"{nameof(Category)} is null.");
+            
 
-                return BadRequest($"{nameof(Category)} is null.");
-            }
-
-            var categoryForDelete = await _service.GetByIdAsync(category.Id, false);
+            var categoryForDelete = await _service.GetByIdAsync(id, false);
 
             if (categoryForDelete is null)
             {
-                _logger.LogError($"No such category with id {category.Id}.");
+                _logger.LogError($"No such category with id {id}.");
 
-                return BadRequest($"Category with id {category.Id} not found.");
+                return BadRequest($"Category with id {id} not found.");
             }
             
             await _service.DeleteAsync(categoryForDelete);
-            _logger.LogInfo($"Category {category.Name} has deleted.");
+            _logger.LogInfo($"Category {categoryForDelete.Name} has deleted.");
 
             return Ok();
         }

@@ -22,9 +22,15 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
             .Include(p => p.OrderItems)
             .SingleOrDefaultAsync();
     
-
     public async Task<IEnumerable<Order>> GetOrdersForUserAsync(string email) => 
         await FindByCondition(i => i.Email == email, true)
+            .Include(p => p.Address)
+            .Include(p => p.DeliveryMethod)
+            .Include(p => p.OrderItems)
+            .ToListAsync();
+
+    public async Task<IEnumerable<Order>> GetOrdersAsync() => 
+        await FindAll(false)
             .Include(p => p.Address)
             .Include(p => p.DeliveryMethod)
             .Include(p => p.OrderItems)

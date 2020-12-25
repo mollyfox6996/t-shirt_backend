@@ -24,6 +24,14 @@ namespace Services.Services
             _mapper = mapper;
             _basketRepository = basketRepository;
         }
+
+        public async Task<IEnumerable<OrderToReturnDTO>> GetAllOrdersAsync()
+        {
+            var result = await _repositoryManager.Order.GetOrdersAsync();
+
+            return _mapper.Map<IEnumerable<OrderToReturnDTO>>(result);
+
+        }
         public async Task<OrderToReturnDTO> CreateOrderAsync(OrderDTO orderDto, string email)
         {
             var address = _mapper.Map<Address>(orderDto.Address);
@@ -94,6 +102,20 @@ namespace Services.Services
             var result = await _repositoryManager.Order.GetOrdersForUserAsync(email);
             
             return _mapper.Map<IEnumerable<OrderToReturnDTO>>(result);
+        }
+
+        public async Task CreateDeliveryMethodAsync(DeliveryMethod method)
+        {
+            _repositoryManager.DeliveryMethod.CreateMethod(method);
+            await _repositoryManager.SaveAsync();
+        }
+
+        public async Task DeleteDeliveryMethodAsync(int id)
+        {
+            var result = await _repositoryManager.DeliveryMethod.GetDeliveryMethodAsync(id);
+
+            _repositoryManager.DeliveryMethod.DeleteMethod(result);
+            await _repositoryManager.SaveAsync();
         }
     }
 }

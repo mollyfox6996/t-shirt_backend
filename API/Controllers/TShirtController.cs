@@ -140,5 +140,24 @@ namespace API.Controllers
             
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteShirt(int id)
+        {
+            var shirtForDelete = await _tshirtService.GetByIdAsync(id);
+            if(shirtForDelete is null)
+            {
+                _logger.LogError("Tshirt id is null.");
+
+                return BadRequest();
+            }
+
+            await _tshirtService.DeleteAsync(id);
+            _logger.LogInfo($"Shirt {shirtForDelete.Data.Name} has deleted.");
+            return Ok(); 
+        }
+
     }
 }

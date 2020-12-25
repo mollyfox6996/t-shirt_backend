@@ -91,5 +91,12 @@ namespace Services.Services
                 return result;
             }
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var shirtForDelete = await _repositoryManager.Tshirt.GetTShirtByIdAsync(id, false);
+            _repositoryManager.Tshirt.DeleteTShirt(shirtForDelete);
+            await _repositoryManager.SaveAsync();
+        }
     }
 }

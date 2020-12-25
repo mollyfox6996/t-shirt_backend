@@ -14,5 +14,8 @@ public class DeliveryMethodRepository : RepositoryBase<DeliveryMethod>, IDeliver
     }
     public async Task<IEnumerable<DeliveryMethod>> GetDeliveryMethodsAsync(bool trackChanges) =>  await FindAll(trackChanges).ToListAsync();
     public async Task<DeliveryMethod> GetDeliveryMethodAsync(int id) => await FindByCondition(i => i.Id == id, false).SingleOrDefaultAsync();
+
+    public void CreateMethod(DeliveryMethod method) => Create(method);
+    public void DeleteMethod(DeliveryMethod method) => Delete(method);
     
 }

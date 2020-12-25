@@ -10,7 +10,7 @@ namespace Domain.Interfaces
         Task<IEnumerable<Order>> GetOrdersForUserAsync(string email);
         Task<Order> GetOrderByIdAsync(int id, string email);
 
-        //Task<bool> CheckOrderExist(int)
+        Task<IEnumerable<Order>> GetOrdersAsync();
         void DeleteOrder(Order order);
        
     }
