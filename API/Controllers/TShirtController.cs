@@ -46,7 +46,17 @@ namespace API.Controllers
             var tshirtsWithMetadata =  await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirtsPage = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
-            
+
+            if(tshirtsPage is null)
+            {
+
+                _logger.LogError($"T-Shirts  not found.");
+
+                return NoContent();
+            }
+
+            _logger.LogInfo($"Get T-Shirts successes.");
+
             return Ok(tshirtsPage);
         }
 
@@ -78,6 +88,15 @@ namespace API.Controllers
             var tshirtsWithMetadata = await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
             var tshirts = _mapper.Map<IEnumerable<TShirtToReturnDTO>>(tshirtsWithMetadata);
+
+            if (tshirts is null)
+            {
+
+                _logger.LogError($"T-Shirts  not found.");
+
+                return NoContent();
+            }
+
             _logger.LogInfo($"Received a t-shirt for user with email: {email}.");
 
             return Ok(tshirts);
@@ -126,6 +145,14 @@ namespace API.Controllers
 
             var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             var tshirt = await _tshirtService.CreateAsync(model, email);
+
+            if(!tshirt.Success)
+            {
+                _logger.LogError("Tshirt was not be created");
+
+                return BadRequest("Tshirt was not be created");
+
+            }
             _logger.LogInfo("Create a new t-shirt.");
 
             return Ok(tshirt);
@@ -136,6 +163,12 @@ namespace API.Controllers
         public async Task<IActionResult> GetListOfGenders()
         {
             var result = _mapper.Map<IEnumerable<GenderDTO>>(await _genderService.GetAllGendersAsync());
+
+            if(result is null)
+            {
+                return NoContent();
+            }
+
             _logger.LogInfo("Get list of genders");
             
             return Ok(result);
