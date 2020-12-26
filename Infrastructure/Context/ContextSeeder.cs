@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Entities.OrderAggregate;
@@ -18,39 +15,39 @@ namespace Infrastructure.Context
             {
                 if(!context.DeliveryMethods.Any())
                 {
-                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/delivery.json");
-                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(data);
-
-                    foreach (var item in methods)
+                   
+                    var methods = new DeliveryMethod[]
                     {
-                        await context.DeliveryMethods.AddAsync(item);
-                    }
+                        new DeliveryMethod {Name = "Courier", DeliveryTime = "2 days", Price = 350},
+                        new DeliveryMethod {Name = "Standart Delivery", DeliveryTime = "7 days", Price = 140}
+                    };
+
+                    await context.DeliveryMethods.AddRangeAsync(methods);
 
                     await context.SaveChangesAsync();
                 }
 
                 if(!context.Genders.Any())
                 {
-                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/gender.json");
-                    var genders = JsonSerializer.Deserialize<List<Gender>>(data);
-
-                    foreach (var item in genders)
+                    var genders = new Gender[]
                     {
-                        await context.Genders.AddAsync(item);
-                    }
+                        new Gender {Name = "Male"},
+                        new Gender {Name = "Female"}
+                    };
 
                     await context.SaveChangesAsync();
                 }
 
                 if(!context.Categories.Any())
                 {
-                    var data = await File.ReadAllTextAsync("../Infrastructure/SeedData/category.json");
-                    var categories = JsonSerializer.Deserialize<List<Category>>(data);
 
-                    foreach (var item in categories)
+                    var categories = new Category[]
                     {
-                        await context.Categories.AddAsync(item);
-                    }
+                        new Category {Name = "IT"},
+                        new Category {Name = "Humor"},
+                        new Category {Name = "Animals"},
+                        new Category {Name = "Other"}
+                    };
 
                     await context.SaveChangesAsync();
                 }
