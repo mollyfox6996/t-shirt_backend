@@ -35,6 +35,9 @@ namespace Infrastructure.Context
                         new Gender {Name = "Female"}
                     };
 
+                    
+                    await context.Genders.AddRangeAsync(genders);
+                    
                     await context.SaveChangesAsync();
                 }
 
@@ -49,6 +52,8 @@ namespace Infrastructure.Context
                         new Category {Name = "Other"}
                     };
 
+                    await context.Categories.AddRangeAsync(categories);
+                    
                     await context.SaveChangesAsync();
                 }
             }
