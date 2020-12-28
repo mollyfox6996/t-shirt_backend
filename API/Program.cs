@@ -29,7 +29,7 @@ namespace API
                 {
                     var context = services.GetRequiredService<RepositoryContext>();
                     await context.Database.MigrateAsync();
-                    await ContextSeeder.SeedAsync(context, loggerFactory);
+                    await ContextSeeder.SeedAsync(context, loggerFactory, userManager);
                     await RoleInitializer.InitializeAsync(userManager, rolesManager, configuration);
                     var logger = loggerFactory.CreateLogger<Program>();
                     logger.LogInformation("Ok"); 
