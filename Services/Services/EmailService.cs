@@ -46,11 +46,14 @@ namespace Services.Services
 
         private async Task SendEmail(MimeMessage emailMessage)
         {
-            using var client = new SmtpClient();
-            await client.ConnectAsync("smtp.gmail.com", 465, true);
-            await client.AuthenticateAsync( _configuration["EmailServiceSettings:login"], _configuration["EmailServiceSettings:password"] );
-            await client.SendAsync(emailMessage);
-            await client.DisconnectAsync(true);
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync("smtp.gmail.com", 465, true);
+                await client.AuthenticateAsync( _configuration["EmailServiceSettings:login"], _configuration["EmailServiceSettings:password"] );
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
+            }
+            
         }
     }
 }
