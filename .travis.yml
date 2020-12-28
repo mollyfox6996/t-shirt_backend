@@ -6,10 +6,14 @@ script:
 - dotnet restore
 - dotnet build TshirtBackend.sln
 services: docker
+before_install:
+- openssl aes-256-cbc -K $encrypted_da7a7d6d72dd_key -iv $encrypted_da7a7d6d72dd_iv
+  -in deployf_rsa.enc -out deployf_rsa -d
+- eval "$(ssh-agent -s)"
+-chmod 600 ./deployf_rsa
 deploy:
   skip_cleanup: true
   provider: script
   script: bash deploy.sh
   on:
     branch: master
-
