@@ -13,7 +13,6 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deployf_rsa
 - ssh-add ./deployf_rsa
-- ssh -i ./deployf_rsa root@165.227.158.125
 addons:
   ssh_known_hosts: 165.227.158.125
 before_deploy:
