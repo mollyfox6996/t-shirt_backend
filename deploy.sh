@@ -12,9 +12,9 @@ docker push alexgrebennikov/t-shirt_backend:latest
 
 ssh -i ./deployf_rsa root@165.227.158.125 <<EOF
 
-    docker stop t-shirt_api_1
-    docker rm t-shirt_api_1
-    docker run -d --name t-shirt_api_1 -p 5000:80 --restart always alexgrebennikov/t-shirt_backend
+    docker stop api
+    docker rm api
+    docker run -d --name api -p 5000:80 --restart always alexgrebennikov/t-shirt_backend
     docker system prune -a -f
 EOF
 
