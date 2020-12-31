@@ -6,6 +6,15 @@ script:
 - dotnet restore
 - dotnet build TshirtBackend.sln
 services: docker
+before_install:
+- openssl aes-256-cbc -K $encrypted_da7a7d6d72dd_key -iv $encrypted_da7a7d6d72dd_iv
+  -in deployf_rsa.enc -out deployf_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deployf_rsa
+before_deploy:
+- eval "$(ssh-agent -s)"
+- mkdir -p ~/.ssh && echo "Host *" > ~/.ssh/config && echo "StrictHostKeyChecking no" >> ~/.ssh/config
+-chmod 600 deployf_rsa
 deploy:
   skip_cleanup: true
   provider: script
