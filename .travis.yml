@@ -14,6 +14,8 @@ before_install:
 - chmod 600 ./deployf_rsa
 - ssh-add ./deployf_rsa
 - ssh -i ./deployf_rsa root@165.227.158.125
+addons:
+  ssh_known_hosts: 165.227.158.125
 before_deploy:
 - eval "$(ssh-agent -s)"
 - mkdir -p ~/.ssh && echo "Host *" > ~/.ssh/config && echo "StrictHostKeyChecking no" >> ~/.ssh/config
