@@ -1,14 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using API.Extensions;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using NLog;
+using Services.Interfaces;
+using Services.Mappers;
+using System.IO;
+using Services.Services;
 
 namespace API
 {
@@ -16,33 +17,59 @@ namespace API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/NLog.config"));
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureLoggerService();
             services.AddControllers();
+            services.AddAutoMapper(typeof(MappingProfiles));
+            services.ConfigureDbContext(Configuration);
+            services.ConfigureRepositoryService();
+            services.ConfigureBasketRepository();
+            services.ConfigureCategoryService();
+            services.ConfigureGenderService();
+            services.ConfigureRedis(Configuration);
+            services.ConfigureIdentity(Configuration);
+            services.ConfigureTshirtService();
+            services.ConfigureTokenService();
+            services.ConfigureEmailService();
+            services.ConfigureUserService();
+            services.ConfigureCommentsService();
+            services.ConfigureLikeService();
+            services.ConfigureRatingService();
+            services.AddSignalR();
+            services.ConfigureBasketService();
+            services.ConfigureOrderService();
+            services.ConfigureSwagger();
+            services.ConfigureCors(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerService logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureExceptionHandler(logger);
+            app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseStaticFiles();
+            app.UseCors("CorsPolicy");
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TShirt API V1"));
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapHub<AppHub>("/hub");
+                });
         }
     }
 }
