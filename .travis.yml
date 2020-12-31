@@ -15,7 +15,7 @@ before_install:
 before_deploy:
 - eval "$(ssh-agent -s)"
 - mkdir -p ~/.ssh && echo "Host *" > ~/.ssh/config && echo "StrictHostKeyChecking no" >> ~/.ssh/config
--chmod 600 deployf_rsa
+- chmod 600 deployf_rsa
 
 deploy:
   skip_cleanup: true
