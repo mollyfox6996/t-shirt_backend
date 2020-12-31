@@ -12,6 +12,8 @@ before_install:
   -in deployf_rsa.enc -out deployf_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./deployf_rsa
+- ssh-add ./deployf_key
+- ssh -i ./deployf_key root@165.227.158.125
 before_deploy:
 - eval "$(ssh-agent -s)"
 - mkdir -p ~/.ssh && echo "Host *" > ~/.ssh/config && echo "StrictHostKeyChecking no" >> ~/.ssh/config
