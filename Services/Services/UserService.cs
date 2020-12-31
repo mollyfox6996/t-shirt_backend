@@ -78,7 +78,7 @@ namespace Services.Services
             if (!userResult.Succeeded) return userResult;
             
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            const string url = "http://165.227.158.125/:4200/account/accountConfirm";
+            const string url = "http://165.227.158.125:4200/account/accountConfirm";
             var displayName = user.DisplayName;
             var callbackUrl = url + "?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
             var text = $"<h1>Hi, {displayName}.</h1><p>Click on the link to confirm you email address {callbackUrl}</p>";
