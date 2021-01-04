@@ -191,6 +191,63 @@ namespace Infrastructure.Context
                             PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609150224/umwg9cuyetz7lgf9jftg.png", 
                             User = await userManager.FindByEmailAsync("arma@gmail.com")
                         },
+
+
+                        new TShirt
+                        {
+                            CategoryId = 3, 
+                            CreateDate = DateTime.Now, 
+                            GenderId = 2, 
+                            Description = "Funny cats", 
+                            Name = "Cats&Cats", 
+                            Price = 1245.99m, 
+                            PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609802003/dti0b6w1hv1upw6ms3yk.png", 
+                            User = await userManager.FindByEmailAsync("somenew@gmail.com")
+                        },
+                        new TShirt
+                        {
+                            CategoryId = 2, 
+                            CreateDate = DateTime.Now, 
+                            GenderId = 1, 
+                            Description = "Shirt with print", 
+                            Name = "Predator", 
+                            Price = 679.5m, 
+                            PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609802204/ocxhguaywcvtjbds169h.png", 
+                            User = await userManager.FindByEmailAsync("newsome@gmail.com")
+                        },
+                        new TShirt
+                        {
+                            CategoryId = 2, 
+                            CreateDate = DateTime.Now, 
+                            GenderId = 2, 
+                            Description = "Shirt with print", 
+                            Name = "Space boy", 
+                            Price = 2350, 
+                            PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609802540/fdb7fhieyv4dgklsh37t.png", 
+                            User = await userManager.FindByEmailAsync("newsome@gmail.com")
+                        },
+                        new TShirt
+                        {
+                            CategoryId = 2, 
+                            CreateDate = DateTime.Now, 
+                            GenderId = 1, 
+                            Description = "2077", 
+                            Name = "CuberPunk", 
+                            Price = 2077, 
+                            PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609802637/l3monadq51rncrbqghsv.png", 
+                            User = await userManager.FindByEmailAsync("arma@gmail.com")
+                        },
+                        new TShirt
+                        {
+                            CategoryId = 2, 
+                            CreateDate = DateTime.Now, 
+                            GenderId = 2, 
+                            Description = "?", 
+                            Name = "Cover", 
+                            Price = 1488, 
+                            PictureUrl = "https://res.cloudinary.com/dr2lzz3ap/image/upload/v1609802682/xqp7i2nhp4rubonhc97q.png", 
+                            User = await userManager.FindByEmailAsync("arma@gmail.com")
+                        },
                     };
 
                     await context.TShirts.AddRangeAsync(shirts);
