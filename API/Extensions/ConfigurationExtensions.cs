@@ -82,7 +82,7 @@ namespace API.Extensions
                 {
                     builder.AllowAnyHeader()
                     .AllowAnyMethod()
-                    .WithOrigins(configuration["AngularUrl"])
+                    .WithOrigins(configuration["AngularUrl"], configuration["NginxProxyUrl"])
                     .AllowCredentials();
                 });
             });
