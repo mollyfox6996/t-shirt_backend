@@ -13,7 +13,8 @@ using Domain.Interfaces;
 using Infrastructure.Repository;
 using Services.Services;
 using StackExchange.Redis;
-
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Extensions
 {
@@ -40,6 +41,14 @@ namespace API.Extensions
         public static void ConfigureBasketRepository(this IServiceCollection services) => services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
         public static void ConfigureRedis(this IServiceCollection services,IConfiguration configuration) => services.AddSingleton<IConnectionMultiplexer>(c => ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
         
+        public static void ConfigureHttps(this IServiceCollection services)
+        {
+            services.AddHttpsRedirection(options => 
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 5001;
+            });
+        }
         public static void ConfigureIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             var builder = services.AddIdentityCore<AppUser>();
