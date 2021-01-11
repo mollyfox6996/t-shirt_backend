@@ -27,7 +27,6 @@ namespace API
         {
             services.ConfigureLoggerService();
             services.AddControllers();
-            services.ConfigureHttps();
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();
@@ -59,6 +58,7 @@ namespace API
 
             app.ConfigureExceptionHandler(logger);
             app.UseHttpsRedirection();
+            app.UseHsts();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");
