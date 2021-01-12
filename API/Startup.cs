@@ -10,7 +10,6 @@ using Services.Interfaces;
 using Services.Mappers;
 using System.IO;
 using Services.Services;
-using LettuceEncrypt;
 
 namespace API
 {
