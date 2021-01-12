@@ -10,6 +10,7 @@ using Services.Interfaces;
 using Services.Mappers;
 using System.IO;
 using Services.Services;
+using LettuceEncrypt;
 
 namespace API
 {
@@ -27,6 +28,7 @@ namespace API
         {
             services.ConfigureLoggerService();
             services.AddControllers();
+            services.AddLettuceEncrypt();
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();

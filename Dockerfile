@@ -18,6 +18,5 @@ EXPOSE 5000
 
 
 
-
 COPY --from=base /app/out .
 ENTRYPOINT ["dotnet", "API.dll"]
