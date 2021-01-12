@@ -9,9 +9,6 @@ using Infrastructure.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Server.Kestrel.Https;
-using LettuceEncrypt;
-using System.Net;
 
 namespace API
 {
@@ -52,14 +49,6 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.PreferHostingUrls(false);
-                    webBuilder.UseKestrel(k => 
-                    {
-                        var appServices = k.ApplicationServices;
-                        k.Listen(IPAddress.Any, 443,
-                        o => o.UseHttps(h => h.UseLettuceEncrypt(appServices)));
-                            
-                    });
                 });
     }
 }

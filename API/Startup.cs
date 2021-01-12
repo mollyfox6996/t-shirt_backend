@@ -28,7 +28,6 @@ namespace API
         {
             services.ConfigureLoggerService();
             services.AddControllers();
-            services.AddLettuceEncrypt().PersistDataToDirectory(new DirectoryInfo("lettuce"), null);
             services.AddAutoMapper(typeof(MappingProfiles));
             services.ConfigureDbContext(Configuration);
             services.ConfigureRepositoryService();
