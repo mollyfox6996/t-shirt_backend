@@ -54,24 +54,7 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseKestrel(k => 
-                    {
-                        k.Listen(IPAddress.Any, 5000, o => 
-                        {
-                            var certPath = File.ReadAllText(Environment.GetEnvironmentVariable("CERTIFICATE"));
-                            var keyPath = File.ReadAllText(Environment.GetEnvironmentVariable("KEY"));
-                            
-                            var key = ECDsa.Create();
-                            key.ImportECPrivateKey(Convert.FromBase64String(keyPath), out _);
-                            
-                            var cert = new X509Certificate2(Convert.FromBase64String(certPath));
-                            
-                            var certWithKey = cert.CopyWithPrivateKey(key);
-
-                            o.UseHttps(certWithKey);
-                        });
-                    });
-                    
+                
                 });
     }
 }
