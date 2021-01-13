@@ -9,8 +9,7 @@ using Infrastructure.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Server.Kestrel;
-using System.Net;
+
 
 
 namespace API
@@ -52,14 +51,7 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseKestrel(k => 
-                    {
-                        k.Listen(IPAddress.Any, 5000, o => 
-                        {
-                            var certPath = Environment.GetEnvironmentVariable("Kestrel:Certificates:Default:Path");
-                            o.UseHttps(certPath);
-                        });
-                    });
+                    
                 });
     }
 }
