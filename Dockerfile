@@ -1,13 +1,13 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS base
 WORKDIR /app
 
+EXPOSE 5000
 COPY ["API/API.csproj", "API/"]
 COPY ["Domain/Domain.csproj", "Domain/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 COPY ["Services/Services.csproj", "Services/"]
 COPY *.sln ./
 
-RUN update-ca-certificates
 RUN dotnet restore 
 
 COPY . ./
@@ -18,7 +18,4 @@ WORKDIR /app
 
 COPY --from=base /app/out .
 
-FROM nginx:1.17.1-alpine
-COPY nginx.conf /etc/nginx/
-EXPOSE 5000
 ENTRYPOINT ["dotnet", "API.dll"]
