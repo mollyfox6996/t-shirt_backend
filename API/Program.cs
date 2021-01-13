@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Domain.Entities;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
