@@ -57,9 +57,9 @@ namespace API
             }
 
             app.ConfigureExceptionHandler(logger);
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseRouting();
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
