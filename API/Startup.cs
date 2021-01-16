@@ -68,7 +68,7 @@ namespace API
             app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
-                    endpoints.MapHub<AppHub>("/hub");
+                    endpoints.MapHub<AppHub>("/hub/shirts");
                 });
         }
     }
