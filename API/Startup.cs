@@ -55,7 +55,7 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.ConfigureExceptionHandler(logger);
             app.UseHttpsRedirection();
             app.UseRouting();

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,10 @@ using Infrastructure.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Server.Kestrel;
+using System.Net;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace API
 {
@@ -17,30 +22,30 @@ namespace API
         public static async Task Main(string[] args)
         {
             var host =  CreateHostBuilder(args).Build();
-            using(var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-                var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                var configuration = services.GetRequiredService<IConfiguration>();
+            //using(var scope = host.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            //    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+            //    var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            //    var configuration = services.GetRequiredService<IConfiguration>();
 
-                try 
-                {
-                    var context = services.GetRequiredService<RepositoryContext>();
-                    await context.Database.MigrateAsync();
-                    await ContextSeeder.SeedAsync(context, loggerFactory, userManager);
-                    await RoleInitializer.InitializeAsync(userManager, rolesManager, configuration);
-                    var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogInformation("Ok"); 
+            //    try 
+            //    {
+            //        var context = services.GetRequiredService<RepositoryContext>();
+            //        await context.Database.MigrateAsync();
+            //        await ContextSeeder.SeedAsync(context, loggerFactory, userManager);
+            //        await RoleInitializer.InitializeAsync(userManager, rolesManager, configuration);
+            //        var logger = loggerFactory.CreateLogger<Program>();
+            //        logger.LogInformation("Ok"); 
                     
-                }
-                catch(Exception ex)
-                {
-                   var logger = loggerFactory.CreateLogger<Program>();
-                   logger.LogError($"An error occurred during migration: {ex.Message}, {ex.StackTrace}"); 
-                }
-            }
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //       var logger = loggerFactory.CreateLogger<Program>();
+            //       logger.LogError($"An error occurred during migration: {ex.Message}, {ex.StackTrace}"); 
+            //    }
+            //}
             await host.RunAsync();
         }
 
@@ -49,6 +54,23 @@ namespace API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseKestrel(k => 
+                    {
+                        k.Listen(IPAddress.Any, 5000, o => 
+                        {
+                            var certPath = File.ReadAllText(Environment.GetEnvironmentVariable("CERTIFICATE"));
+                            var keyPath = File.ReadAllText(Environment.GetEnvironmentVariable("KEY"));
+                            
+                            var key = ECDsa.Create();
+                            key.ImportECPrivateKey(Convert.FromBase64String(keyPath), out _);
+                            
+                            var cert = new X509Certificate2(Convert.FromBase64String(certPath));
+                            
+                            var certWithKey = cert.CopyWithPrivateKey(key);
+
+                            o.UseHttps(certWithKey);
+                        });
+                    });
                 });
     }
 }
