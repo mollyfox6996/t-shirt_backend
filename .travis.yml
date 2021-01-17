@@ -5,6 +5,7 @@ mono: none
 script:
 - dotnet restore
 - dotnet build TshirtBackend.sln
+- RUN dotnet publish -c Release -o $TRAVIS_BUILD_DIR/out
 services: docker
 
 before_install:

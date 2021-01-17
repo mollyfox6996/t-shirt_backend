@@ -1,12 +1,11 @@
 #!/bin/sh
-
-
-
+cd $TRAVIS_BUILD_DIR/out
 docker build -t alexgrebennikov/t-shirt_backend .
 
-echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
 docker push alexgrebennikov/t-shirt_backend:latest
 
+cd $HOME 
 ssh -i ./deployf_rsa root@165.227.158.125 <<EOF
     cd /var/www/t-shirt
     docker stop api
