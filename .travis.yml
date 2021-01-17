@@ -6,6 +6,7 @@ script:
 - dotnet restore
 - dotnet build TshirtBackend.sln
 - dotnet publish -c Release -o $TRAVIS_BUILD_DIR/out
+- cp Dockerfile $TRAVIS_BUILD_DIR/out/Dockerfile
 services: docker
 
 before_install:
