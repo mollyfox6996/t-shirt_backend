@@ -4,8 +4,7 @@ sudo: required
 mono: none
 script:
 - dotnet restore
-- dotnet build TshirtBackend.sln
-- dotnet publish -c Release -o $TRAVIS_BUILD_DIR/out
+- dotnet publish --self-contained --runtime linux-x64 -c Release -o $TRAVIS_BUILD_DIR/out
 - cp Dockerfile $TRAVIS_BUILD_DIR/out/Dockerfile
 services: docker
 
