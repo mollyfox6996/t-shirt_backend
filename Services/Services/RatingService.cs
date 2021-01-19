@@ -49,41 +49,27 @@ namespace Services.Services
             return rating != null;
         }
 
-        //TODO: Fix bug in rating.Average!!!!
         public async Task<RatingDTO> GetRatingByShirt(int id)
         {
-            var ratings = await _repositoryManager.Rating.GetRatingByShirtId(id, true);
-            if (ratings == null)
+            var rating = await _repositoryManager.Rating.GetRatingByShirtId(id, true);
+            if (!rating.Any())
             {
-                var rating = new RatingDTO
+                return new RatingDTO
                 {
                     ShirtId = id,
                     AvgValue = 0
                 };
-                
-                return rating;
             }
-            try
+            
+            var avg = rating.Average(n => n.Value);
+            var ratingDto = new RatingDTO
             {
-                var avg = ratings.Average(n => n.Value);
-                var ratingDto = new RatingDTO
-                {
-                    ShirtId = id,
-                    AvgValue = avg
-                };
-                
-                return ratingDto;
-            }
-            catch(Exception)
-            {
-                var ratingDto = new RatingDTO
-                {
-                    ShirtId = id,
-                    AvgValue = 0
-                };
-                
-                return ratingDto;
-            }
+                ShirtId = id,
+                AvgValue = avg
+            };
+
+            return ratingDto;
+            
         }
     }
 }

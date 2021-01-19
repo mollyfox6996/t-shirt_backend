@@ -28,7 +28,6 @@ namespace Infrastructure.Repository
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> filter, bool trackChanges) => !trackChanges ? RepositoryContext.Set<T>().Where(filter).AsNoTracking() : RepositoryContext.Set<T>().Where(filter);
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> filter, Expression<Func<T, bool>> expression, bool trackChanges) => !trackChanges ? RepositoryContext.Set<T>().Where(filter).Where(expression).AsNoTracking() : RepositoryContext.Set<T>().Where(filter).Where(expression);
         
     }
 }
