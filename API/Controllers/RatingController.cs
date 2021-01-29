@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Services.DTOs.RatingDTOs;
 
@@ -9,7 +7,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RatingController : ControllerBase
+    public class RatingController : BaseController
     {
         private readonly IRatingService _ratingService;
         private readonly ILoggerService _logger;
@@ -24,7 +22,7 @@ namespace API.Controllers
         [Route("add")]
         public async Task<IActionResult> AddRating(AddRatingDTO addRatingDto)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             await _ratingService.AddRating(addRatingDto, email);
             _logger.LogInfo($"Add rating by user with email: {email}.");
             
@@ -53,7 +51,7 @@ namespace API.Controllers
         [Route("check")]
         public async Task<IActionResult> CheckRatingExist([FromBody] int shirtId)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             var result = await _ratingService.CheckRatingFromUser(shirtId, email);
             _logger.LogInfo($"Check rating for t-shirt with id: {shirtId}");
 

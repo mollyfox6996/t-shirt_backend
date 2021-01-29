@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Services.DTOs.LikeDTOs;
 
@@ -10,7 +8,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LikesController : ControllerBase
+    public class LikesController : BaseController
     {
         private readonly ILikeService _likeService;
         private readonly ILoggerService _logger;
@@ -25,7 +23,7 @@ namespace API.Controllers
         [Route("add")]
         public async Task<IActionResult> AddLike([FromBody] int shirtId)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             await _likeService.AddLike(shirtId, email);
             _logger.LogInfo($"Add like for t-shirt with id: {shirtId}.");
             
@@ -46,7 +44,7 @@ namespace API.Controllers
         [Route("delete")]
         public async Task<IActionResult> DeleteLike([FromBody] int shirtId)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             await _likeService.DeleteLike(shirtId, email);
             _logger.LogInfo($"Delete like for t-shirt with id: {shirtId}.");
             
@@ -57,7 +55,7 @@ namespace API.Controllers
         [Route("check")]
         public async Task<IActionResult> CheckLikeExist([FromBody] int shirtId)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             var result = await _likeService.CheckLikeFromUser(shirtId, email);
             _logger.LogInfo($"Check like for t-shirt with id: {shirtId}.");
             

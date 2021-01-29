@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using Services.Interfaces;
-using System.Linq;
 using System.Threading.Tasks;
 using Services.DTOs.CommentDTOs;
 
@@ -9,7 +7,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentsController : ControllerBase
+    public class CommentsController : BaseController
     {
         private readonly ICommentService _commentService;
         private readonly ILoggerService _logger;
@@ -24,7 +22,7 @@ namespace API.Controllers
         [Route("add")]
         public async Task<IActionResult> AddComment(CreateCommentDTO createCommentDto)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             await _commentService.AddComment(createCommentDto, email);
             _logger.LogInfo($"Add comment for t-shirt with id: {createCommentDto.ShirtId}.");
             

@@ -4,11 +4,9 @@ using Domain.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Services.DTOs.GenderDTOs;
 using Services.DTOs.TshirtDTOs;
@@ -17,7 +15,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TshirtController : ControllerBase
+    public class TshirtController : BaseController
     {
         private readonly ITshirtService _tshirtService;
         private readonly IGenderService _genderService;
@@ -34,11 +32,6 @@ namespace API.Controllers
             _userManager = userManager;
         }
 
-        private void SetResponseHeaders(MetaData metaData)
-        {
-            Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metaData));
-        }
         
         [HttpGet]
         public async Task<IActionResult> GetTShirts([FromQuery] TshirtParameters tshirtParameters)
@@ -83,7 +76,7 @@ namespace API.Controllers
         [Route("getByUser")]
         public async Task<IActionResult> GetByCurrentUser([FromQuery] TshirtParameters tshirtParameters)
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             tshirtParameters.Author = email;
             var tshirtsWithMetadata = await _tshirtService.GetTShirtsAsync(tshirtParameters);
             SetResponseHeaders(tshirtsWithMetadata.MetaData);
@@ -143,7 +136,7 @@ namespace API.Controllers
                 return BadRequest("CreateTshirtDTO object is null");
             }
 
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             var tshirt = await _tshirtService.CreateAsync(model, email);
 
             if(!tshirt.Success)

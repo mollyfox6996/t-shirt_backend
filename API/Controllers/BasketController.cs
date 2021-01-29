@@ -9,7 +9,7 @@ namespace API.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class BasketController : ControllerBase
+    public class BasketController : BaseController
     {
         private readonly IBasketService _basketService;
         private readonly ILoggerService _loggerService;

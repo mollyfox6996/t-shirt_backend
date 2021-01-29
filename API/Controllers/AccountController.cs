@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Services.DTOs.LoginDTOs;
 using Services.DTOs.UserDTOs;
@@ -11,7 +9,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseController
     {
         private readonly IUserService _userService;
         private readonly ILoggerService _logger;
@@ -104,7 +102,7 @@ namespace API.Controllers
         [Route("getCurrentUser")]
         public async Task<IActionResult> GetCurrentUser()
         {
-            var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var email = GetEmailFromHttpContextAsync();
             var user = await _userService.GetUser(email);
             _logger.LogInfo($"Get current user with email {email}.");
 
